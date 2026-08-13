@@ -108,6 +108,7 @@ a{color:var(--gold);text-decoration:none}
 a:hover{color:#fff}
 h1,h2,h3,p,ul{margin:0}
 .tnum{font-variant-numeric:tabular-nums}
+.brk-mobile{display:none}
 
 /* ---------- 2. KEYFRAMES ---------- */
 @keyframes glow{0%,100%{opacity:.55}50%{opacity:1}}
@@ -475,6 +476,33 @@ h1,h2,h3,p,ul{margin:0}
   font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
 }
 
+/* 참여 방법 탭 (PC방 / 개인PC) */
+.howto-tabs{display:flex;justify-content:center;gap:8px;margin-bottom:clamp(20px,3vw,28px);flex-wrap:wrap}
+.howto-tab{
+  background:rgba(255,255,255,.06);border:1px solid var(--line-warm-lt);color:var(--beige-dk);
+  font-weight:800;font-size:clamp(13px,2.6vw,15px);letter-spacing:-.02em;
+  padding:10px 22px;border-radius:999px;cursor:pointer;
+  transition:background .25s ease,color .25s ease,border-color .25s ease;
+}
+.howto-tab:hover:not(.is-active){border-color:var(--beige-dk);color:var(--beige-lt)}
+.howto-tab.is-active{background:var(--gold);border-color:var(--gold);color:#111}
+.howto-panel{display:none}
+.howto-panel.is-active{display:block}
+.info-note{
+  display:flex;align-items:flex-start;gap:10px;
+  background:rgba(0,0,0,.28);border:1px solid var(--line-warm);border-radius:12px;
+  padding:14px 16px;margin-top:clamp(16px,2.6vw,22px);
+}
+.info-note__icon{
+  flex:0 0 auto;width:20px;height:20px;border-radius:50%;margin-top:1px;
+  background:var(--gold);color:#111;font-weight:900;font-size:12px;font-style:normal;
+  display:flex;align-items:center;justify-content:center;
+}
+.info-note__text{
+  margin:0;color:var(--beige-dk);font-weight:500;font-size:clamp(12px,2.4vw,14px);line-height:1.6;
+  font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+}
+
 /* ---------- 7. EVENT 02 ---------- */
 .sec--e2{background:linear-gradient(180deg,#17110A 0%,#120E08 100%)}
 .sec--e2 .deco__tex{background-image:url(./assets/fx-texture2.webp);opacity:.08;mix-blend-mode:soft-light}
@@ -510,9 +538,10 @@ h1,h2,h3,p,ul{margin:0}
   transition:transform .5s var(--ease);
 }
 .gear__img:hover{transform:translateY(-6px) scale(1.05)}
-.gear__name{color:#fff;font-weight:900;font-size:clamp(22px,6vw,32px);letter-spacing:-.045em;line-height:1.15;margin-bottom:10px}
+.gear__name{color:#fff;font-weight:900;font-size:clamp(22px,6vw,32px);letter-spacing:-.02em;line-height:1.3;margin-bottom:10px}
 .gear__spec{color:#E2B65C;font-weight:500;font-size:clamp(15px,3vw,22px);letter-spacing:-.03em}
-.gear .badge-gold{margin-bottom:14px}
+.gear .badge-gold{margin-bottom:14px;letter-spacing:-.01em;white-space:nowrap}
+.gear__info{text-align:center}
 
 .mission-lead{text-align:center;margin-bottom:clamp(16px,2.6vw,24px)}
 .mission-lead div{color:var(--beige-lt);font-weight:500;font-size:clamp(15px,3vw,20px);letter-spacing:-.03em}
@@ -568,6 +597,10 @@ h1,h2,h3,p,ul{margin:0}
   font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
 }
 .benefit__img{display:block;width:100%;max-width:270px;height:auto;margin:0 auto}
+.benefit__note{
+  margin-top:10px;color:var(--cool-dk);font-weight:600;font-size:clamp(12px,2.2vw,13px);line-height:1.6;text-align:center;
+  font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+}
 .benefit-note{
   list-style:none;color:var(--cool-dk);font-weight:600;font-size:clamp(12px,2.4vw,14px);line-height:1.65;text-align:center;
   margin:clamp(28px,4.4vw,52px) 0 var(--gap-lg);padding:0;
@@ -613,6 +646,7 @@ h1,h2,h3,p,ul{margin:0}
 .sec--guide .deco__glow--b{left:-14%;bottom:-10%;width:min(50vw,580px);background:radial-gradient(50% 50% at 50% 50%,rgba(255,255,255,.025),rgba(255,255,255,0) 70%)}
 .block-title{color:#fff;font-weight:900;font-size:clamp(20px,4vw,32px);letter-spacing:-.035em;margin-bottom:clamp(18px,3vw,28px)}
 .block-title--notice{margin-bottom:clamp(14px,2.4vw,20px);scroll-margin-top:64px}
+#howto{scroll-margin-top:64px}
 
 .guides{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--gap)}
 .guide{
@@ -687,14 +721,25 @@ h1,h2,h3,p,ul{margin:0}
   .lucky__nums{width:100%}
   .lucky__num{flex:1}
 
+  /* 모바일 헤더 공지문구가 여러 줄로 줄바꿈되며 높아지므로, 앵커 스크롤 시 헤더 뒤에 가려지지 않도록 여유 확보 */
+  .sec,.block-title--notice,#howto{scroll-margin-top:130px}
+  .brk-mobile{display:inline}
+  .sec-tag{width:126px;margin-bottom:18px}
+  .steps{gap:28px}
+  .benefit__title{font-size:23px}
+  .sec-title{font-size:28px}
+  .e2-head .sec-title{font-size:33px}
+  .e3-head .sec-title{font-size:26px}
+  .sub-title{font-size:20px}
+
   /* 모바일 최소 폰트 14px 기준 상향 — 13px 이하는 실기기에서 읽기 어려움 */
   .kv__x,.season__chip,.season__range,.tier__rank,.badge-gold,
   .pay__btn,.e2-season__name,.e2-season__range,
   .lucky__kicker,.season__foot span,.lucky__num span,.lucky__num b,.mission__tag,
   .sub-desc,.foot-note,.season__label,.step__desc,.mission__desc,
-  .benefit__badge,.benefit__desc,.benefit-note,
+  .benefit__badge,.benefit__desc,.benefit__note,.benefit-note,
   .guide__desc,.acc__panel,.acc__btn,.sec-desc,.rank__label,
-  .lucky__desc,.pay__num,.season-chips span{font-size:14px}
+  .lucky__desc,.pay__num,.season-chips span,.howto-tab,.info-note__text{font-size:14px}
 }
 
 /* ============================================================
@@ -1032,6 +1077,7 @@ h1,h2,h3,p,ul{margin:0}
   }
   .mobile-fab {
     display: flex;
+    bottom: calc(56px + 16px + env(safe-area-inset-bottom, 0px));
   }
 }
 </style>
@@ -1112,7 +1158,7 @@ h1,h2,h3,p,ul{margin:0}
   <img class="fnav__ribbon" src="./assets/ribbon-nav.png" alt="">
   <span class="fnav__bg"></span>
   <img class="fnav__trophy" src="./assets/nav-trophy.webp" alt="">
-  <a class="fnav__link" href="#event1"><span class="fnav__num">01</span>참여방법</a>
+  <a class="fnav__link" href="#howto"><span class="fnav__num">01</span>참여방법</a>
   <a class="fnav__link" href="#event2"><span class="fnav__num">02</span>미션 챌린지</a>
   <a class="fnav__link" href="#event3"><span class="fnav__num">03</span>카카오페이혜택</a>
   <span class="fnav__sep"></span>
@@ -1128,7 +1174,7 @@ h1,h2,h3,p,ul{margin:0}
     <div class="sec-head e1-head">
       <img class="sec-tag" src="./assets/tag-event01.png" alt="EVENT 01">
       <h2 class="sec-title">랭킹에 오르면<br>마일리지가 쏟아진다!</h2>
-      <p class="sec-desc">크래프트박스 LOL 랭킹전에 참여하고 순위에 따라 피카 마일리지를 받으세요.<br>시즌별로 순위가 초기화되어 두 번의 기회가 있어요!</p>
+      <p class="sec-desc">크래프트박스 LOL 랭킹전에 참여하고<br class="brk-mobile"> 순위에 따라 피카 마일리지를 받으세요.<br>시즌별로 순위가 초기화되어 두 번의 기회가 있어요!</p>
     </div>
 
     <div class="season-chips">
@@ -1187,35 +1233,71 @@ h1,h2,h3,p,ul{margin:0}
         <div class="lucky__num"><b>777위</b><span class="tnum">+30,000</span></div>
       </div>
     </div>
-<p class="foot-note">내 순위와 점수는 크래프트박스 클라이언트에서 확인할 수 있습니다.</p>
+
+    <p class="foot-note">내 순위와 점수는 크래프트박스 클라이언트에서 확인할 수 있습니다.</p>
+
     <div class="divider" aria-hidden="true"><span class="divider__dot"></span></div>
 
-    <h3 class="sub-title">참여 방법</h3>
-    <div class="steps">
-      <div class="step">
-        <div class="step__thumb"><img src="./assets/step1.png" alt="크래프트박스 다운로드 화면" style="object-position:center top"></div>
-        <div class="step__body">
-          <div class="step__title"><i>1</i>. 크래프트박스 설치</div>
-          <p class="step__desc">PC방 좌석에서는 설치 없이 바로 이용할 수 있어요.</p>
+    <h3 class="sub-title" id="howto">참여 방법</h3>
+
+    <div class="howto-tabs" role="tablist">
+      <button type="button" class="howto-tab is-active" role="tab" aria-selected="true" data-howto-tab="pcroom">PC방 참여 방법</button>
+      <button type="button" class="howto-tab" role="tab" aria-selected="false" data-howto-tab="personal">개인PC 참여 방법</button>
+    </div>
+
+    <div class="howto-panel is-active" role="tabpanel" data-howto-panel="pcroom">
+      <div class="steps">
+        <div class="step">
+          <div class="step__thumb"><img class="is-contain" src="./assets/img_how.png" alt="PC방 바탕화면 LOL 랭킹전 아이콘"></div>
+          <div class="step__body">
+            <div class="step__title"><i>1</i>. PC방 바탕화면 상단<br>LOL 랭킹전 클릭</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__thumb"><img class="is-contain" src="./assets/step2.png" alt="랭킹전 참가하기 화면"></div>
+          <div class="step__body">
+            <div class="step__title"><i>2</i>. 롤 랭킹전 메뉴에서<br>랭킹전 참가하기 클릭</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__thumb"><img src="./assets/m1.webp" alt="리그 오브 레전드 플레이 화면" style="object-position:right center"></div>
+          <div class="step__body">
+            <div class="step__title"><i>3</i>. 리그 오브 레전드 플레이하기</div>
+            <p class="step__desc">크래프트박스 실행 시, 롤 플레이 데이터가 자동 집계됩니다.</p>
+          </div>
         </div>
       </div>
-      <div class="step">
-        <div class="step__thumb"><img class="is-contain" src="./assets/step2.png" alt="랭킹전 참가하기 화면"></div>
-        <div class="step__body">
-          <div class="step__title"><i>2</i>. 랭킹전 참여하기</div>
-          <p class="step__desc">롤 랭킹전 메뉴에서 참여하기 버튼 클릭!</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step__thumb"><img src="./assets/m1.webp" alt="리그 오브 레전드 플레이 화면" style="object-position:right center"></div>
-        <div class="step__body">
-          <div class="step__title"><i>3</i>. 플레이하고 점수 쌓기</div>
-          <p class="step__desc">플레이 기록이 자동 집계되어 랭킹에 반영됩니다.</p>
-        </div>
+      <div class="info-note">
+        <i class="info-note__icon" aria-hidden="true">i</i>
+        <p class="info-note__text">롤 랭킹전 메뉴 접속이 불가한 경우, 매장 사장님께 크래프트박스(피카) 최신 버전 업데이트를 요청해 주세요.</p>
       </div>
     </div>
 
-    
+    <div class="howto-panel" role="tabpanel" data-howto-panel="personal">
+      <div class="steps">
+        <div class="step">
+          <div class="step__thumb"><img src="./assets/step1.png" alt="크래프트박스 다운로드 화면" style="object-position:center top"></div>
+          <div class="step__body">
+            <div class="step__title"><i>1</i>. 크래프트박스 설치</div>
+            <p class="step__desc">PC방 좌석에서는 설치 없이 바로 이용할 수 있어요.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__thumb"><img class="is-contain" src="./assets/step2.png" alt="랭킹전 참가하기 화면"></div>
+          <div class="step__body">
+            <div class="step__title"><i>2</i>. 랭킹전 참여하기</div>
+            <p class="step__desc">롤 랭킹전 메뉴에서 참여하기 버튼 클릭!</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__thumb"><img src="./assets/m1.webp" alt="리그 오브 레전드 플레이 화면" style="object-position:right center"></div>
+          <div class="step__body">
+            <div class="step__title"><i>3</i>. 플레이하고 점수 쌓기</div>
+            <p class="step__desc">플레이 기록이 자동 집계되어 랭킹에 반영됩니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="deco" aria-hidden="true">
@@ -1232,9 +1314,9 @@ h1,h2,h3,p,ul{margin:0}
       <img class="sec-tag" src="./assets/tag-event02.png" alt="EVENT 02">
       <h2 class="sec-title">더블 미션 챌린지</h2>
       <div class="e2-season">
-        <span class="e2-season__name" data-mission-season>시즌 9</span>
+        <span class="e2-season__name">시즌 9~10</span>
         <span class="e2-season__bar"></span>
-        <span class="e2-season__range tnum" data-mission-range>2026. 09. 01 ~ 09. 30</span>
+        <span class="e2-season__range tnum">2026. 09. 01 ~ 10. 31</span>
       </div>
     </div>
 
@@ -1246,8 +1328,8 @@ h1,h2,h3,p,ul{margin:0}
         <div>
           <img class="gear__img" src="./assets/gear-keyboard.png" alt="G PRO X TKL RAPID 유선 게이밍 키보드">
         </div>
-        <div>
-          <div class="badge-gold">🏆 단 1명에게만</div>
+        <div class="gear__info">
+          <div class="badge-gold">🏆 총 400명 중에서 추첨을 통해 1명 지급!</div>
           <div class="gear__name">G PRO X TKL RAPID<br>유선 게이밍 키보드</div>
           <div class="gear__spec">블랙, 마그네틱축</div>
         </div>
@@ -1295,6 +1377,7 @@ h1,h2,h3,p,ul{margin:0}
         <div class="benefit__title">5회 이상 결제 시<br>5,000원 상당 혜택</div>
         <p class="benefit__desc">피카PC방에서 카카오페이머니로 5회 이상 결제 시<br>피카플레이 3,000M &amp; 카카오페이 2,000원 할인 쿠폰 지급</p>
         <img class="benefit__img" src="./assets/coupon.png" alt="피카플레이 3,000M · 카카오페이 2,000원 쿠폰">
+        <p class="benefit__note">1회 결제 시 최소 1,000원 이상 결제 건만 인정됩니다.</p>
       </div>
       <div class="benefit" data-benefit="2">
         <div class="benefit__badge">혜택 02</div>
@@ -1414,6 +1497,7 @@ h1,h2,h3,p,ul{margin:0}
         <li>카카오페이로 피카페이를 충전한 금액은 이벤트 대상에 포함되지 않습니다.</li>
         <li>할인쿠폰 유효기간<br>· 9월 참여자 : N월 N일 ~ N월 N일<br>· 10월 참여자 : N월 N일 ~ N월 N일</li>
         <li>카카오페이 N원 할인 쿠폰은 N원 초과 결제 시에만 사용 가능합니다.</li>
+        <li>1회 결제 시 최소 1,000원 이상 결제 건만 인정됩니다.</li>
       </ul>
     </div>
   </div>
