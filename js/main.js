@@ -3,10 +3,11 @@
    1. SEASON      시즌 D-day / 게이지 (날짜 기준 자동 전환)
    2. ACCORDION   유의사항 열고 닫기
    3. BENEFIT     EVENT 03 혜택 카드 골드 강조 이동
-   4. PROGRESS    상단 스크롤 진행바
-   5. REVEAL      스크롤 등장 애니메이션
-   6. PARALLAX    KV 커서 반응(깊이 층)
-   7. SILK        KV 배경 WebGL 셰이더
+   4. HOWTO TABS  참여 방법 PC방/개인PC 탭 전환
+   5. PROGRESS    상단 스크롤 진행바
+   6. REVEAL      스크롤 등장 애니메이션
+   7. PARALLAX    KV 커서 반응(깊이 층)
+   8. SILK        KV 배경 WebGL 셰이더
    ============================================================ */
 (function () {
   "use strict";
@@ -50,15 +51,6 @@
       dot.style.boxShadow = "none";
       dot.style.animation = "none";
     }
-
-    // EVENT 02 시즌 표기
-    var ms = document.querySelector("[data-mission-season]");
-    var mr = document.querySelector("[data-mission-range]");
-    if (ms && mr) {
-      ms.textContent = s.name;
-      mr.textContent = s.from.getFullYear() + ". " + pad(s.from.getMonth() + 1) + ". " + pad(s.from.getDate()) +
-                       " ~ " + pad(s.to.getMonth() + 1) + ". " + pad(s.to.getDate());
-    }
   })();
 
   /* ---------- 2. ACCORDION ---------- */
@@ -91,7 +83,27 @@
     });
   })();
 
-  /* ---------- 4. PROGRESS + 5. REVEAL ---------- */
+  /* ---------- 4. HOWTO TABS (참여 방법) ---------- */
+  (function initHowtoTabs() {
+    var tabs = document.querySelectorAll("[data-howto-tab]");
+    var panels = document.querySelectorAll("[data-howto-panel]");
+    if (!tabs.length || !panels.length) return;
+    Array.prototype.forEach.call(tabs, function (tab) {
+      tab.addEventListener("click", function () {
+        var key = tab.getAttribute("data-howto-tab");
+        Array.prototype.forEach.call(tabs, function (t) {
+          var active = t === tab;
+          t.classList.toggle("is-active", active);
+          t.setAttribute("aria-selected", String(active));
+        });
+        Array.prototype.forEach.call(panels, function (p) {
+          p.classList.toggle("is-active", p.getAttribute("data-howto-panel") === key);
+        });
+      });
+    });
+  })();
+
+  /* ---------- 5. PROGRESS + 6. REVEAL ---------- */
   var bar = document.getElementById("progress");
   function progress() {
     if (!bar) return;
@@ -143,7 +155,7 @@
 
   if (reduced) return;
 
-  /* ---------- 6. PARALLAX (KV 커서 반응) ---------- */
+  /* ---------- 7. PARALLAX (KV 커서 반응) ---------- */
   (function initParallax() {
     var hero = document.getElementById("hero");
     if (!hero) return;
@@ -175,7 +187,7 @@
     });
   })();
 
-  /* ---------- 7. SILK (KV 배경 WebGL) ---------- */
+  /* ---------- 8. SILK (KV 배경 WebGL) ---------- */
   (function initSilk() {
     var cv = document.getElementById("silk");
     if (!cv) return;
