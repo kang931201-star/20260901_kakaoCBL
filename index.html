@@ -1,0 +1,1672 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>카카오페이와 함께하는 크래프트박스 LOL 랭킹전</title>
+<link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
+<meta name="description" content="크래프트박스 LOL 랭킹전에 참여하고 순위별 마일리지를 받아가세요! 카카오페이 결제 혜택까지 확인해보세요.">
+<meta name="keywords" content="크래프트박스,카카오페이,LOL,랭킹전,피카PC방,마일리지">
+<meta name="author" content="KAKAOPAY × CRAFTBOX">
+<meta name="theme-color" content="#FEE500">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="KAKAOPAY × CRAFTBOX">
+<meta property="og:title" content="카카오페이와 함께하는 크래프트박스 LOL 랭킹전">
+<meta property="og:description" content="크래프트박스 LOL 랭킹전에 참여하고 순위별 마일리지를 받아가세요! 카카오페이 결제 혜택까지 확인해보세요.">
+<meta property="og:url" content="https://ics.mediaweb.co.kr/_event/20260901_kakaoCBL/index.html" />
+<meta property="og:image" content="https://ics.mediaweb.co.kr/_event/20260901_kakaoCBL/assets/Thumbnail_800x400.jpg">
+<meta property="og:image:alt" content="카카오페이 × 크래프트박스 LOL 랭킹전">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="카카오페이와 함께하는 크래프트박스 LOL 랭킹전">
+<meta name="twitter:description" content="크래프트박스 LOL 랭킹전에 참여하고 순위별 마일리지를 받아가세요! 카카오페이 결제 혜택까지 확인해보세요.">
+<meta name="twitter:url" content="https://ics.mediaweb.co.kr/_event/20260901_kakaoCBL/index.html" />
+<meta name="twitter:image" content="https://ics.mediaweb.co.kr/_event/20260901_kakaoCBL/assets/Thumbnail_1200x630.jpg">
+<meta name="twitter:image:alt" content="카카오페이 × 크래프트박스 LOL 랭킹전">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.4/kakao.min.js" crossorigin="anonymous"></script>
+<style>
+/* ============================================================
+   랭킹전 이벤트 페이지
+   1. TOKENS / RESET
+   2. KEYFRAMES
+   3. LAYOUT (섹션 공통)
+   4. KV (히어로)
+   5. FLOATING NAV
+   6. EVENT 01 - 랭킹전
+   7. EVENT 02 - 더블 미션 챌린지
+   8. EVENT 03 - 카카오페이 혜택
+   9. GUIDE / NOTICE
+   10. RESPONSIVE
+   ============================================================ */
+
+@font-face {
+    font-family: 'GMarketSans';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansLight.woff') format('woff');
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GMarketSans';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'GMarketSans';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+    font-weight: 700;
+    font-display: swap;
+}
+
+/* ---------- 1. TOKENS / RESET ---------- */
+:root{
+  --header-h:60px;
+  --gold:#FEE500;
+  --gold-dim:#F5C842;
+  --gold-deep:#8A6A16;
+  --ink:#0C0906;
+  --beige:#C4B392;
+  --beige-lt:#EDE3CE;
+  --beige-dk:#9C8A6A;
+  --line-warm:#3A2C12;
+  --line-warm-lt:#5A4620;
+  --navy-line:#2B3648;
+  --cool:#A9B6C9;
+  --cool-dk:#7E8C9F;
+  --gray:#A8A8AE;
+  --line-dark:#26262A;
+
+  --pad-x:clamp(84px, calc(20px + 10.5vw), 190px);
+  --pad-y:clamp(56px, 9vw, 116px);
+  --gap:clamp(10px, 1.8vw, 16px);
+  --gap-lg:clamp(40px, 6vw, 52px);
+  --wrap:1080px;
+  --ease:cubic-bezier(.22,.7,.3,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--ink);
+  color:#fff;
+  overflow-x:hidden;
+  word-break:keep-all;
+  overflow-wrap:break-word;
+  font-family:"GMarketSans","Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+}
+img{border-style:none}
+button{font-family:inherit}
+a{color:var(--gold);text-decoration:none}
+a:hover{color:#fff}
+h1,h2,h3,p,ul{margin:0}
+.tnum{font-variant-numeric:tabular-nums}
+
+/* ---------- 2. KEYFRAMES ---------- */
+@keyframes glow{0%,100%{opacity:.55}50%{opacity:1}}
+@keyframes aura{
+  0%,100%{opacity:.45;transform:translate(-50%,-50%) scale(.94)}
+  50%{opacity:.9;transform:translate(-50%,-50%) scale(1.06)}
+}
+@keyframes kvRise{
+  0%{opacity:0;transform:translateY(46px) scale(.985)}
+  100%{opacity:1;transform:translateY(0) scale(1)}
+}
+@keyframes kvTitleIn{
+  0%{opacity:0;filter:blur(9px);transform:translateY(18px)}
+  100%{opacity:1;filter:blur(0);transform:translateY(0)}
+}
+@keyframes kvFadeIn{
+  0%{opacity:0;transform:translateY(24px)}
+  100%{opacity:1;transform:translateY(0)}
+}
+@keyframes glossSweep{
+  0%{background-position:-70% 0;opacity:0}
+  4%{opacity:1}
+  17%{background-position:170% 0;opacity:1}
+  22%{background-position:170% 0;opacity:0}
+  100%{background-position:170% 0;opacity:0}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important;transition:none !important}
+}
+
+/* ---------- 3. LAYOUT ---------- */
+.progress{
+  position:fixed;left:0;top:0;height:3px;width:0;z-index:300;pointer-events:none;
+  background:linear-gradient(90deg,var(--gold-deep),var(--gold));
+  box-shadow:0 0 14px rgba(254,229,0,.55);
+}
+.sec{
+  position:relative;overflow:hidden;
+  padding:var(--pad-y) var(--pad-x);
+  scroll-margin-top:64px;
+}
+.sec__inner{position:relative;z-index:1;max-width:var(--wrap);margin:0 auto}
+/* 배경 데코 레이어 — JS 리빌 대상에서 제외되도록 aria-hidden 유지 */
+.deco{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.deco__tex{position:absolute;inset:0;background-size:cover;background-position:center}
+.deco__glow{position:absolute;aspect-ratio:1}
+
+/* 섹션 헤더 공통 */
+.sec-head{position:relative;text-align:center}
+.sec-tag{display:block;width:clamp(94px,12vw,132px);height:auto;margin:0 auto clamp(6px,1vw,10px)}
+.sec-title{
+  color:#fff;font-weight:900;line-height:1.22;letter-spacing:-.038em;text-wrap:balance;
+  font-size:clamp(24px,5.2vw,44px);margin-bottom:12px;
+}
+.sec-desc{color:var(--beige);font-weight:500;font-size:clamp(13px,2.7vw,17px);line-height:1.6}
+.sub-title{
+  color:#fff;font-weight:800;font-size:clamp(17px,3.4vw,24px);letter-spacing:-.03em;
+  text-align:center;margin-bottom:clamp(14px,2.6vw,22px);
+}
+.sub-title--tight{margin-bottom:8px}
+.sub-desc{
+  color:var(--beige-dk);font-weight:500;font-size:clamp(12px,2.4vw,14px);text-align:center;margin-bottom:clamp(14px,2.6vw,22px);
+  font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+}
+.foot-note{
+  color:var(--beige-dk);font-weight:500;font-size:clamp(12px,2.4vw,15px);line-height:1.65;text-align:center;
+  font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+}
+
+/* 골드 다이아몬드 디바이더 */
+.divider{display:flex;align-items:center;gap:14px;margin:var(--gap-lg) 0}
+.divider::before,.divider::after{content:"";flex:1;height:1px}
+.divider::before{background:linear-gradient(90deg,rgba(254,229,0,0),rgba(254,229,0,.32))}
+.divider::after{background:linear-gradient(90deg,rgba(254,229,0,.32),rgba(254,229,0,0))}
+.divider__dot{width:9px;height:9px;background:var(--gold);transform:rotate(45deg);box-shadow:0 0 14px rgba(254,229,0,.65)}
+.divider--cool::before{background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.2))}
+.divider--cool::after{background:linear-gradient(90deg,rgba(255,255,255,.2),rgba(255,255,255,0))}
+.divider--cool .divider__dot{width:7px;height:7px;box-shadow:0 0 12px rgba(254,229,0,.5)}
+
+/* ---------- 4. KV ---------- */
+.kv{
+  position:relative;overflow:hidden;display:flex;align-items:center;
+  padding:clamp(48px,7vw,96px) var(--pad-x);
+  min-height:clamp(420px,42.5vw,700px);
+  background-color:#000;
+  background-image:radial-gradient(76% 96% at 74% 58%,#231705 0%,#120D06 46%,#000 100%);
+}
+.kv__silk{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;opacity:.55;mix-blend-mode:screen}
+.kv__inner{position:relative;width:100%;max-width:var(--wrap);margin:0 auto}
+.kv__ribbon{position:absolute;pointer-events:none;z-index:1}
+.kv__ribbon img{display:block;width:100%;height:auto}
+.kv__ribbon--l{
+  left:clamp(-90px,-4vw,-20px);bottom:clamp(-40px,-2vw,0px);width:clamp(200px,27vw,450px);
+  animation:kvFadeIn .9s var(--ease) .95s both;
+}
+.kv__ribbon--r{
+  right:clamp(-80px,-3vw,-10px);bottom:clamp(-120px,-7vw,-50px);width:clamp(190px,25vw,410px);
+  animation:kvFadeIn .9s var(--ease) 1.15s both;
+}
+/* 트로피 — 하단을 KV 바닥에 맞추고 텍스트 컬럼을 침범하지 않게 폭 상한 */
+.kv__trophy-wrap{position:absolute;inset:0}
+.kv__trophy,.kv__trophy-gloss{
+  position:absolute;left:45%;
+  bottom:calc(-1 * clamp(48px,7vw,96px) - clamp(24px,3.8vw,66px));
+  height:calc(100% + clamp(140px,19vw,270px));
+  width:auto;max-width:calc(68% + 20vw);
+}
+.kv__trophy{
+  object-fit:contain;object-position:left bottom;will-change:transform;
+  filter:drop-shadow(0 30px 60px rgba(0,0,0,.6));
+  animation:kvRise 1.15s var(--ease) both;
+}
+.kv__trophy-gloss{
+  aspect-ratio:1996/1800;pointer-events:none;mix-blend-mode:screen;
+  -webkit-mask-image:url(./assets/kv-trophy.webp);mask-image:url(./assets/kv-trophy.webp);
+  -webkit-mask-size:contain;mask-size:contain;
+  -webkit-mask-position:left bottom;mask-position:left bottom;
+  -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+  background:linear-gradient(102deg,rgba(255,255,255,0) 44%,rgba(255,248,214,.62) 50%,rgba(255,255,255,0) 56%);
+  background-size:320% 100%;background-repeat:no-repeat;
+  animation:glossSweep 7s ease-in-out 2.6s infinite;
+}
+.kv__copy{position:relative;z-index:2;max-width:min(100%,560px);display:flex;flex-direction:column;align-items:flex-start}
+.kv__logos{display:flex;align-items:center;gap:clamp(8px,1.6vw,14px);margin-bottom:clamp(18px,3vw,30px)}
+.kv__logos img{display:block;width:auto}
+.kv__logo-pay{height:clamp(24px,3.4vw,32px)}
+.kv__logo-cbx{height:clamp(18px,2.6vw,25px)}
+.kv__x{color:#7A6B4E;font-size:clamp(11px,2.2vw,15px)}
+.kv__title{position:relative;animation:kvTitleIn 1s var(--ease) .45s both}
+.kv__title img,.kv__title-gloss{width:436px;max-width:clamp(280px,42vw,473px);aspect-ratio:436/250;height:auto}
+.kv__title img{display:block}
+.kv__title-gloss{
+  position:absolute;left:0;top:0;pointer-events:none;mix-blend-mode:screen;
+  -webkit-mask-image:url(./assets/title.png);mask-image:url(./assets/title.png);
+  -webkit-mask-size:100% 100%;mask-size:100% 100%;
+  background:linear-gradient(102deg,rgba(255,255,255,0) 44%,rgba(255,255,255,.7) 50%,rgba(255,255,255,0) 56%);
+  background-size:320% 100%;background-repeat:no-repeat;
+  animation:glossSweep 7s ease-in-out 1.4s infinite;
+}
+.kv__cta{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  width:200px;height:50px;margin-top:clamp(14px,2.2vw,20px);
+  background:var(--gold);color:#111;font-weight:900;font-size:clamp(13px,2.5vw,15px);
+  letter-spacing:-.03em;border-radius:999px;
+  box-shadow:0 10px 30px rgba(254,229,0,.22);
+  transition:transform .3s var(--ease),box-shadow .3s ease;
+}
+.kv__cta:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(254,229,0,.4);color:#111}
+
+/* 시즌 D-day 박스 */
+.season{
+  margin-top:clamp(14px,2.2vw,20px);width:395px;max-width:100%;
+  background-color:rgba(0,0,0,.58);
+  background-image:radial-gradient(rgba(255,255,255,.07) .5px,rgba(255,255,255,0) .5px);
+  background-size:3px 3px;backdrop-filter:blur(6px);
+  border:1px solid rgba(254,229,0,.28);border-radius:16px;
+  padding:clamp(14px,2.2vw,18px) clamp(16px,2.4vw,20px);
+}
+.season__top{
+  display:flex;align-items:center;flex-wrap:wrap;gap:9px;
+  padding-bottom:clamp(11px,1.8vw,14px);margin-bottom:clamp(11px,1.8vw,14px);
+  border-bottom:1px solid rgba(254,229,0,.16);
+}
+.season__chip{
+  background:rgba(254,229,0,.14);border:1px solid rgba(254,229,0,.42);color:var(--gold);
+  font-weight:800;font-size:clamp(11px,2.1vw,13px);padding:4px 10px;border-radius:999px;
+}
+.season__range{color:#DACAA8;font-weight:700;font-size:clamp(11px,2.2vw,14px);letter-spacing:-.02em}
+.season__mid{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:10px}
+.season__state{display:flex;align-items:center;gap:8px}
+.season__dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px rgba(254,229,0,.9);animation:glow 1.8s ease-in-out infinite}
+.season__label{color:var(--beige-lt);font-weight:800;font-size:clamp(12px,2.4vw,15px);letter-spacing:-.02em}
+.season__dday{color:var(--gold);font-weight:900;font-size:clamp(17px,3.2vw,23px);letter-spacing:-.03em}
+.season__track{position:relative;height:7px;border-radius:999px;background:rgba(255,255,255,.1);overflow:hidden}
+.season__bar{
+  position:absolute;left:0;top:0;bottom:0;width:0;border-radius:999px;
+  background:linear-gradient(90deg,var(--gold-deep),var(--gold));
+  box-shadow:0 0 12px rgba(254,229,0,.5);
+  transition:width 1.2s var(--ease);
+}
+.season__foot{display:flex;justify-content:space-between;margin-top:8px}
+.season__foot span{color:var(--beige-dk);font-weight:700;font-size:clamp(10px,2vw,12px)}
+
+/* ---------- 5. FLOATING NAV ---------- */
+.fnav{
+  position:fixed;right:clamp(8px,1.2vw,22px);top:50%;transform:translateY(-50%);
+  z-index:60;width:clamp(78px,8.5vw,104px);padding:8px;
+  display:flex;flex-direction:column;gap:3px;isolation:isolate;
+}
+.fnav__bg{
+  position:absolute;inset:0;z-index:-1;
+  background:rgba(18,13,7,.92);backdrop-filter:blur(12px);
+  border:1px solid var(--line-warm);border-radius:16px;
+  box-shadow:0 16px 44px rgba(0,0,0,.5);
+}
+.fnav__ribbon{position:absolute;right:0;top:0;transform:translate(6%,-58%);width:clamp(56px,6vw,78px);height:auto;pointer-events:none;z-index:-2}
+.fnav__trophy{
+  position:absolute;left:50%;top:0;transform:translate(-50%,-62%);
+  width:clamp(34px,3.6vw,46px);height:auto;pointer-events:none;
+  filter:drop-shadow(0 6px 14px rgba(0,0,0,.6));
+}
+.fnav__leaf{
+  position:absolute;left:0;bottom:0;transform:translate(-38%,32%);
+  width:clamp(52px,5.6vw,72px);height:auto;pointer-events:none;
+  filter:drop-shadow(0 6px 14px rgba(0,0,0,.5));
+}
+.fnav__link{
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  color:var(--beige-lt);font-weight:700;font-size:clamp(11px,1.2vw,13px);
+  line-height:1.25;text-align:center;padding:11px 4px;border-radius:11px;
+  transition:background .25s ease,color .25s ease;
+}
+.fnav__link:hover{background:var(--gold);color:#111}
+.fnav__num{font-weight:900;font-size:clamp(10px,1.1vw,11px);letter-spacing:.06em;opacity:.65}
+.fnav__sep{height:1px;background:var(--line-warm);margin:5px 6px}
+.fnav__sub{
+  display:flex;align-items:center;justify-content:center;
+  color:var(--beige);font-weight:700;font-size:clamp(11px,1.2vw,12px);
+  padding:10px 4px;border-radius:11px;white-space:nowrap;
+  transition:background .25s ease,color .25s ease;
+}
+.fnav__sub:hover{background:rgba(255,255,255,.09);color:#fff}
+.fnav__top{
+  display:flex;align-items:center;justify-content:center;gap:3px;
+  color:#8A7A5C;font-weight:800;font-size:clamp(11px,1.2vw,12px);
+  padding:9px 4px;margin-top:3px;border-radius:11px;
+  border-top:1px solid var(--line-warm);transition:color .25s ease;
+}
+.fnav__top:hover{color:var(--gold)}
+
+/* ---------- 6. EVENT 01 ---------- */
+.sec--e1{background:radial-gradient(125% 100% at 50% 0%,#463212 0%,#251A0A 46%,#140F09 100%)}
+.sec--e1 .deco__tex{background-image:url(./assets/fx-texture.webp);opacity:.08;mix-blend-mode:overlay}
+.sec--e1 .deco__glow{left:-10%;top:4%;width:min(54vw,640px);background:radial-gradient(50% 50% at 50% 50%,rgba(255,206,92,.10),rgba(255,206,92,0) 70%)}
+.e1-head{margin-bottom:clamp(20px,3.4vw,32px)}
+
+.season-chips{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:clamp(22px,5vw,44px)}
+.season-chips span{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(0,0,0,.32);border:1px solid rgba(255,255,255,.15);
+  color:var(--beige-lt);font-weight:700;font-size:clamp(13px,2.7vw,16px);
+  letter-spacing:-.02em;padding:13px 22px;border-radius:999px;
+}
+.season-chips b{color:var(--gold-dim);font-weight:800}
+
+/* 포디움 */
+.podium{display:flex;flex-direction:column;gap:var(--gap);margin-bottom:var(--gap)}
+.rank1{
+  position:relative;overflow:hidden;text-align:center;
+  background:radial-gradient(120% 150% at 50% 0%,#5A4110 0%,#33240B 42%,#1C1408 100%);
+  border:2px solid var(--gold);border-radius:20px;
+  padding:clamp(24px,4vw,40px) clamp(18px,3vw,32px);
+  box-shadow:0 0 0 1px rgba(254,229,0,.22),0 0 60px rgba(254,229,0,.14),0 24px 60px rgba(0,0,0,.5);
+  transition:transform .35s var(--ease),box-shadow .35s ease;
+}
+.rank1:hover{
+  transform:translateY(-8px);
+  box-shadow:0 0 0 1px rgba(254,229,0,.5),0 0 90px rgba(254,229,0,.24),0 34px 76px rgba(0,0,0,.55);
+}
+.rank1__aura{
+  position:absolute;left:50%;top:50%;width:min(78%,620px);aspect-ratio:1;
+  transform:translate(-50%,-50%);pointer-events:none;filter:blur(24px);
+  background:radial-gradient(50% 50% at 50% 50%,rgba(255,214,102,.2),rgba(255,190,60,0) 66%);
+  animation:aura 5.5s ease-in-out infinite;
+}
+.rank1__wm{
+  position:absolute;left:-2%;bottom:-14%;pointer-events:none;
+  font-weight:900;font-size:clamp(150px,22vw,300px);line-height:.74;
+  letter-spacing:-.07em;color:rgba(254,229,0,.075);
+}
+.card-ribbon{position:absolute;bottom:0;height:auto;pointer-events:none;opacity:.9}
+.card-ribbon--l{left:0;transform:translate(-22%,18%);width:clamp(90px,13vw,190px)}
+.card-ribbon--r{right:0;transform:translate(22%,22%);width:clamp(84px,12vw,175px)}
+.badge-gold{
+  position:relative;display:inline-flex;align-items:center;gap:7px;
+  background:var(--gold);color:#111;font-weight:900;
+  font-size:clamp(11px,2.1vw,13px);letter-spacing:.1em;
+  padding:7px 18px;border-radius:999px;
+}
+.rank1 .badge-gold{margin-bottom:clamp(14px,2.4vw,22px)}
+.rank1__img{position:relative;display:block;width:100%;max-width:clamp(220px,32vw,340px);height:auto;margin:0 auto}
+
+.podium__row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--gap)}
+.rank{
+  position:relative;overflow:hidden;text-align:center;
+  border-radius:14px;padding:clamp(18px,3vw,26px);
+  transition:transform .35s var(--ease),box-shadow .35s ease;
+}
+.rank:hover{transform:translateY(-6px);box-shadow:0 22px 46px rgba(0,0,0,.4)}
+.rank--2{background:linear-gradient(160deg,#2B2B30 0%,#201709 72%);border:1.5px solid rgba(201,203,209,.7)}
+.rank--3{background:linear-gradient(160deg,#3A2612 0%,#201709 72%);border:1.5px solid rgba(200,139,74,.75)}
+.rank__wm{
+  position:absolute;right:-3%;bottom:-16%;pointer-events:none;
+  font-weight:900;font-size:clamp(110px,15vw,190px);line-height:.78;letter-spacing:-.06em;
+}
+.rank--2 .rank__wm{color:rgba(201,203,209,.07)}
+.rank--3 .rank__wm{color:rgba(200,139,74,.09)}
+.rank__corner{position:absolute;right:0;top:0;width:34px;height:34px}
+.rank--2 .rank__corner{background:linear-gradient(225deg,#C9CBD1 0 50%,rgba(0,0,0,0) 50%)}
+.rank--3 .rank__corner{background:linear-gradient(225deg,#C88B4A 0 50%,rgba(0,0,0,0) 50%)}
+.rank__label{position:relative;font-weight:900;font-size:clamp(12px,2.4vw,14px);letter-spacing:.06em;margin-bottom:12px}
+.rank--2 .rank__label{color:#D8DAE0}
+.rank--3 .rank__label{color:#E0B183}
+.rank__img{position:relative;display:block;width:100%;max-width:200px;height:auto;margin:0 auto}
+
+/* 4위 이하 티어 — 골드 농도 그라데이션 */
+.tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(136px,1fr));gap:8px;margin-bottom:clamp(14px,2.4vw,20px)}
+.tier{
+  border-radius:11px;padding:14px 12px;text-align:center;
+  transition:transform .3s var(--ease);
+}
+.tier:hover{transform:translateY(-4px)}
+.tier__rank{font-weight:800;font-size:clamp(11px,2.2vw,13px);margin-bottom:7px}
+.tier__val{color:#fff;font-weight:800;font-size:clamp(15px,2.9vw,19px);letter-spacing:-.03em}
+.tier--1{background:linear-gradient(165deg,rgba(254,229,0,.16),rgba(254,229,0,.04));border:1px solid rgba(254,229,0,.55)}
+.tier--1 .tier__rank{color:var(--gold)}
+.tier--2{background:linear-gradient(165deg,rgba(254,229,0,.12),rgba(254,229,0,.03));border:1px solid rgba(254,229,0,.42)}
+.tier--2 .tier__rank{color:#F5D75B}
+.tier--3{background:linear-gradient(165deg,rgba(254,229,0,.085),rgba(254,229,0,.02));border:1px solid rgba(254,229,0,.3)}
+.tier--3 .tier__rank{color:#E0C879}
+.tier--4{background:linear-gradient(165deg,rgba(254,229,0,.055),rgba(254,229,0,.014));border:1px solid rgba(254,229,0,.2)}
+.tier--4 .tier__rank{color:#C9B58E}
+.tier--5{background:linear-gradient(165deg,rgba(254,229,0,.032),rgba(254,229,0,.008));border:1px solid rgba(254,229,0,.13)}
+.tier--5 .tier__rank{color:#AC9B78}
+.tier--6{background:rgba(255,255,255,.045);border:1px solid var(--line-warm)}
+.tier--6 .tier__rank{color:var(--beige-dk)}
+
+/* 행운번호 */
+.lucky{
+  display:flex;flex-wrap:wrap;align-items:center;gap:clamp(10px,2vw,20px);
+  background:repeating-linear-gradient(135deg,rgba(255,255,255,.035) 0 10px,rgba(255,255,255,0) 10px 20px),#150F07;
+  border:1px dashed #6B5426;border-radius:14px;
+  padding:clamp(16px,2.8vw,24px);margin-bottom: 40px;
+}
+.lucky__body{flex:1 1 200px}
+.lucky__kicker{
+  display:inline-block;background:var(--beige-lt);color:#150F07;
+  font-weight:900;font-size:clamp(10px,1.9vw,11px);letter-spacing:.12em;
+  padding:4px 9px;border-radius:4px;margin-bottom:9px;
+}
+.lucky__title{color:var(--beige-lt);font-weight:900;font-size:clamp(14px,2.9vw,19px);letter-spacing:-.03em;margin-bottom:5px}
+.lucky__desc{
+  color:var(--beige-dk);font-weight:500;font-size:clamp(12px,2.4vw,15px);line-height:1.6;
+  font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+}
+.lucky__nums{flex:0 0 auto;display:flex;gap:8px;flex-wrap:wrap}
+.lucky__num{border:1px dashed #6B5426;border-radius:10px;padding:11px 16px;text-align:center}
+.lucky__num b{display:block;color:var(--beige-lt);font-weight:900;font-size:clamp(13px,2.6vw,16px)}
+.lucky__num span{color:var(--beige-dk);font-weight:700;font-size:clamp(11px,2.2vw,13px)}
+
+/* 참여 방법 */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:var(--gap);margin-bottom:clamp(28px,4.4vw,48px)}
+.step{display:flex;flex-direction:column}
+.step__thumb{
+  position:relative;width:100%;aspect-ratio:4/3;
+  border-radius:14px;overflow:hidden;background:#202020;border:1px solid var(--line-warm);
+}
+.step__thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.step__thumb img.is-contain{object-fit:contain}
+.step__body{text-align:center;margin-top:clamp(14px,2.2vw,20px)}
+.step__title{color:#fff;font-weight:800;font-size:clamp(15px,2.9vw,18px);letter-spacing:-.03em;margin-bottom:6px}
+.step__title i{color:var(--gold);font-style:normal}
+.step__desc{
+  color:var(--beige);font-weight:500;font-size:clamp(12px,2.4vw,14px);line-height:1.6;
+  font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+}
+
+/* ---------- 7. EVENT 02 ---------- */
+.sec--e2{background:linear-gradient(180deg,#17110A 0%,#120E08 100%)}
+.sec--e2 .deco__tex{background-image:url(./assets/fx-texture2.webp);opacity:.08;mix-blend-mode:soft-light}
+.e2-head{margin-bottom:clamp(24px,4vw,40px)}
+.e2-head .sec-title{font-size:clamp(29px,6.4vw,58px);line-height:1.14;letter-spacing:-.045em;margin-bottom:0;text-shadow:0 0 48px rgba(254,229,0,.28)}
+.e2-season{
+  display:inline-flex;align-items:center;gap:9px;margin-top:clamp(10px,1.8vw,16px);
+  background:rgba(255,255,255,.06);border:1px solid var(--line-warm-lt);
+  border-radius:999px;padding:7px 15px;
+}
+.e2-season__name{color:var(--gold);font-weight:800;font-size:clamp(11px,2.2vw,14px);letter-spacing:-.02em}
+.e2-season__bar{width:1px;height:11px;background:var(--line-warm-lt)}
+.e2-season__range{color:#DACAA8;font-weight:700;font-size:clamp(11px,2.2vw,14px);letter-spacing:-.02em}
+
+/* 게이밍기어 쇼케이스 — 1위 카드와 동일 언어 */
+.gear{
+  position:relative;overflow:hidden;border-radius:20px;
+  background:radial-gradient(120% 150% at 50% 0%,#5A4110 0%,#33240B 42%,#1C1408 100%);
+  border:2px solid var(--gold);
+  box-shadow:0 0 0 1px rgba(254,229,0,.22),0 0 60px rgba(254,229,0,.14),0 24px 60px rgba(0,0,0,.5);
+  padding:clamp(34px,5.4vw,64px) clamp(18px,3vw,36px);
+  margin-bottom:clamp(28px,4.5vw,48px);
+}
+.gear .card-ribbon--l{transform:translate(-30%,26%);width:clamp(80px,11vw,158px)}
+.gear .card-ribbon--r{transform:translate(30%,30%);width:clamp(74px,10vw,146px)}
+.gear__grid{
+  position:relative;display:grid;align-items:center;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:clamp(18px,3.4vw,44px);
+}
+.gear__img{
+  position:relative;display:block;width:100%;max-width:420px;height:auto;margin:0 auto;
+  transition:transform .5s var(--ease);
+}
+.gear__img:hover{transform:translateY(-6px) scale(1.05)}
+.gear__name{color:#fff;font-weight:900;font-size:clamp(22px,6vw,32px);letter-spacing:-.045em;line-height:1.15;margin-bottom:10px}
+.gear__spec{color:#E2B65C;font-weight:500;font-size:clamp(15px,3vw,22px);letter-spacing:-.03em}
+.gear .badge-gold{margin-bottom:14px}
+
+.mission-lead{text-align:center;margin-bottom:clamp(16px,2.6vw,24px)}
+.mission-lead div{color:var(--beige-lt);font-weight:500;font-size:clamp(15px,3vw,20px);letter-spacing:-.03em}
+.missions{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--gap)}
+.mission{
+  position:relative;overflow:hidden;border-radius:16px;
+  background:linear-gradient(170deg,#2E2210 0%,#241A0C 70%);
+  border:1px solid #4A3818;
+  transition:transform .35s var(--ease),border-color .35s ease;
+}
+.mission:hover{transform:translateY(-6px);border-color:#6B5426}
+.mission__thumb{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:#2E2210}
+.mission__thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.72}
+.mission__thumb img.is-pay{object-fit:contain;object-position:center bottom;opacity:.9;top:10px}
+.mission__body{padding:clamp(16px,2.6vw,22px)}
+.mission__tag{display:inline-block;font-weight:800;font-size:11px;letter-spacing:.08em;padding:5px 10px;border-radius:6px;margin-bottom:12px}
+.mission__tag--01{background:var(--line-warm-lt);color:#fff}
+.mission__tag--02{background:var(--gold);color:#111}
+.mission__title{color:#fff;font-weight:500;font-size:clamp(16px,3.1vw,21px);letter-spacing:-.035em;line-height:1.35;margin-bottom:8px}
+.mission__desc{
+  color:var(--beige-dk);font-weight:600;font-size:clamp(12px,2.4vw,14px);line-height:1.6;
+  font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+}
+.mission__desc b{color:var(--beige-lt)}
+
+/* ---------- 8. EVENT 03 ---------- */
+.sec--e3{background:radial-gradient(110% 85% at 18% 0%,#16243C 0%,#0D1626 44%,#0A101C 100%)}
+.sec--e3 .deco__tex{background-image:url(./assets/fx-texture.webp);opacity:.05;mix-blend-mode:soft-light}
+.sec--e3 .deco__glow{left:-8%;bottom:-6%;width:min(52vw,620px);background:radial-gradient(50% 50% at 50% 50%,rgba(120,170,255,.10),rgba(120,170,255,0) 70%)}
+.e3-head{margin-bottom:clamp(28px,5vw,48px)}
+.e3-head .sec-title{font-size:clamp(22px,4.6vw,38px);line-height:1.24;letter-spacing:-.032em}
+
+.benefits{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:var(--gap);margin-bottom:var(--gap-lg)}
+.benefit{
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+  background:linear-gradient(165deg,#1B2A44 0%,#111B2C 72%);
+  border:1px solid #35435C;border-radius:14px;
+  padding:clamp(22px,3.4vw,32px) clamp(18px,3vw,26px);
+  transition:border-color .35s ease,box-shadow .35s ease;
+}
+/* 활성 상태 — 마우스 오버로 옮겨가고 마지막 선택에 머문다 (JS) */
+.benefit.is-active{border-color:var(--gold);box-shadow:0 0 0 1px rgba(254,229,0,.12),0 18px 44px rgba(0,0,0,.4)}
+.benefit__badge{
+  background:#D8DAE0;color:#111;font-weight:800;font-size:clamp(12px,2.3vw,14px);
+  letter-spacing:.02em;padding:8px 20px;border-radius:999px;opacity:.72;
+  margin-bottom:clamp(14px,2.2vw,20px);
+  transition:background .35s ease,opacity .35s ease;
+}
+.benefit.is-active .benefit__badge{background:var(--gold);opacity:1}
+.benefit__title{color:#fff;font-weight:900;font-size:clamp(19px,3.6vw,26px);letter-spacing:-.04em;line-height:1.3;margin-bottom:10px}
+.benefit__desc{
+  color:var(--cool);font-weight:600;font-size:clamp(14px,2.8vw,17px);line-height:1.65;margin-bottom:clamp(16px,2.6vw,24px);
+  font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+}
+.benefit__img{display:block;width:100%;max-width:270px;height:auto;margin:0 auto}
+.benefit-note{
+  list-style:none;color:var(--cool-dk);font-weight:600;font-size:clamp(12px,2.4vw,14px);line-height:1.65;text-align:center;
+  margin:clamp(28px,4.4vw,52px) 0 var(--gap-lg);padding:0;
+  font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+}
+.benefit-note li{margin-bottom:6px}
+.benefit-note li:last-child{margin-bottom:0}
+
+/* 결제 방법 3스텝 */
+.pays{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:var(--gap)}
+.pay{
+  display:flex;flex-direction:column;
+  background:#141D2B;border:1px solid var(--navy-line);border-radius:14px;
+  padding:clamp(16px,2.6vw,22px);
+}
+.pay__num{
+  display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;
+  width:28px;height:28px;margin:0 auto 14px;
+  background:#fff;color:#111;font-weight:900;font-size:13px;border-radius:50%;
+}
+.pay__figure{height:clamp(170px,22vw,230px);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.pay__figure img{display:block;max-width:100%;max-height:100%;width:auto;height:auto}
+.pay__text{
+  color:#fff;font-weight:800;font-size:clamp(14px,2.8vw,17px);letter-spacing:-.03em;
+  line-height:1.45;text-align:center;
+  font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+}
+/* 버튼이 없는 STEP 2·3 — 남는 공간의 정중앙에 텍스트 */
+.pay__text--center{flex:1;display:flex;align-items:center;justify-content:center}
+.pay__text em{color:var(--gold);font-style:normal}
+.pay__btn{
+  margin:14px auto 0;display:flex;align-items:center;justify-content:center;gap:6px;
+  width:fit-content;border:1.5px solid var(--gold);color:var(--gold);
+  font-weight:700;font-size:clamp(11px,2.1vw,13px);letter-spacing:-.02em;
+  padding:9px 14px;border-radius:8px;
+}
+.pay__btn:hover{background:var(--gold);color:#111}
+
+/* ---------- 9. GUIDE / NOTICE ---------- */
+.sec--guide{background:linear-gradient(180deg,#0B0B0C 0%,#08080A 55%,#050506 100%)}
+.sec--guide .deco__tex{background-image:url(./assets/fx-texture.webp);opacity:.04;mix-blend-mode:soft-light}
+.sec--guide .deco__glow--a{right:-12%;top:-10%;width:min(48vw,560px);background:radial-gradient(50% 50% at 50% 50%,rgba(255,255,255,.035),rgba(255,255,255,0) 70%)}
+.sec--guide .deco__glow--b{left:-14%;bottom:-10%;width:min(50vw,580px);background:radial-gradient(50% 50% at 50% 50%,rgba(255,255,255,.025),rgba(255,255,255,0) 70%)}
+.block-title{color:#fff;font-weight:900;font-size:clamp(20px,4vw,32px);letter-spacing:-.035em;margin-bottom:clamp(18px,3vw,28px)}
+.block-title--notice{margin-bottom:clamp(14px,2.4vw,20px);scroll-margin-top:64px}
+
+.guides{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--gap)}
+.guide{
+  display:flex;gap:16px;align-items:center;
+  background:#111113;border:1px solid var(--line-dark);border-radius:14px;
+  padding:clamp(18px,3vw,24px);transition:border-color .3s ease;
+}
+.guide:hover{border-color:#3D3D44}
+.guide__body{flex:1 1 0;min-width:0}
+.guide__title{color:#fff;font-weight:900;font-size:clamp(16px,3.1vw,20px);letter-spacing:-.03em;margin-bottom:8px}
+.guide__desc{
+  color:var(--gray);font-weight:500;font-size:clamp(12px,2.4vw,14px);line-height:1.65;
+  font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+}
+.guide__thumb{position:relative;flex:0 0 clamp(56px,10vw,88px);aspect-ratio:1;border-radius:12px;overflow:hidden}
+.guide__thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+
+/* 유의사항 아코디언 */
+.acc{border:1px solid var(--line-dark);border-radius:14px;overflow:hidden;background:#0D0D0F}
+.acc__btn{
+  width:100%;min-height:56px;display:flex;justify-content:space-between;align-items:center;gap:10px;
+  background:transparent;border:0;border-bottom:1px solid var(--line-dark);
+  color:#fff;font-weight:700;font-size:clamp(13px,2.6vw,16px);
+  text-align:left;padding:18px;cursor:pointer;
+  font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+}
+.acc__btn:hover{background:rgba(255,255,255,.04)}
+.acc__btn:last-of-type{border-bottom:0}
+.acc__arrow{color:var(--gold);font-size:14px;line-height:1;flex:0 0 auto}
+.acc__panel{
+  margin:0;padding:16px 20px 20px 38px;border-bottom:1px solid var(--line-dark);
+  color:var(--gray);font-weight:500;font-size:clamp(12px,2.4vw,14px);line-height:1.8;
+  font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+}
+.acc__panel:last-child{border-bottom:0;padding-bottom:20px}
+.acc__panel[hidden]{display:none}
+.acc__panel a{text-decoration:underline}
+
+/* ---------- 10. RESPONSIVE ---------- */
+@media (max-width:960px){
+  /* 태블릿·모바일 공통 — 트로피를 카피 아래로 내려서 항상 크게, 바닥에 붙게 */
+  .kv{min-height:auto;padding-bottom:0}
+  .kv__inner{display:flex;flex-direction:column;align-items:center}
+  .kv__copy{max-width:100%;width:100%;order:1}
+  .kv__trophy-wrap{
+    position:relative;inset:auto;order:2;
+    width:clamp(280px,92vw,480px);aspect-ratio:1996/1800;
+    margin-top:clamp(18px,4vw,30px);
+  }
+  .kv__trophy,.kv__trophy-gloss{
+    position:absolute;inset:0;left:0;top:0;right:0;bottom:0;
+    width:100%;height:100%;max-width:none;opacity:1;
+  }
+  .kv__trophy{object-fit:contain;object-position:center bottom;filter:drop-shadow(0 20px 40px rgba(0,0,0,.6))}
+  .season{width:100%}
+  .kv__cta{width:100%;height:54px;font-size:16px}
+}
+@media (max-width:760px){
+  :root{--pad-x:20px;--pad-y:clamp(44px,8vw,64px)}
+  .kv__ribbon--l{width:150px;left:-40px;bottom:-20px}
+  .kv__ribbon--r{width:140px;right:-30px;bottom:-40px}
+  /* 플로팅 네비 → 하단 고정 바 */
+  .fnav{
+    right:0;left:0;top:auto;bottom:0;transform:none;
+    width:100%;flex-direction:row;gap:2px;padding:6px;
+  }
+  .fnav__bg{border-radius:0;border-left:0;border-right:0;border-bottom:0}
+  .fnav__ribbon,.fnav__trophy,.fnav__leaf,.fnav__sep,.fnav__top{display:none}
+  .fnav__link,.fnav__sub{flex:1;font-size:14px;padding:9px 2px}
+  .fnav__num{display:none}
+  body{padding-bottom:56px}
+  .lucky__nums{width:100%}
+  .lucky__num{flex:1}
+
+  /* 모바일 최소 폰트 14px 기준 상향 — 13px 이하는 실기기에서 읽기 어려움 */
+  .kv__x,.season__chip,.season__range,.tier__rank,.badge-gold,
+  .pay__btn,.e2-season__name,.e2-season__range,
+  .lucky__kicker,.season__foot span,.lucky__num span,.lucky__num b,.mission__tag,
+  .sub-desc,.foot-note,.season__label,.step__desc,.mission__desc,
+  .benefit__badge,.benefit__desc,.benefit-note,
+  .guide__desc,.acc__panel,.acc__btn,.sec-desc,.rank__label,
+  .lucky__desc,.pay__num,.season-chips span{font-size:14px}
+}
+
+/* ============================================================
+   HEADER + 공유하기
+   ============================================================ */
+.cb-header {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  height: var(--header-h);
+  background: linear-gradient(90deg, #000 0%, #060712 100%);
+  box-shadow: inset 0px -1px 0px rgba(255,255,255,0.13);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cb-header__inner {
+  max-width: 1440px;
+  width: 100%;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+}
+.cb-header__notice-wrap {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 112px;
+  height: 44px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  position: relative;
+}
+.toggle-btn__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.cb-header__notice {
+  font-size: clamp(14px, 1.25vw, 14px);
+  color: #fff;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+.cb-header__notice u { text-decoration: underline; }
+.cb-header__notice b { font-weight: 700; }
+.cb-header__notice a { color: #469CFF; text-decoration: none; }
+.cb-header__notice a:hover u { opacity: 0.8; }
+
+@media (max-width: 768px) {
+  .cb-header {
+    height: auto;
+    min-height: var(--header-h);
+    overflow: visible;
+  }
+  .cb-header__notice {
+    white-space: normal;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+}
+
+.btn-share {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 6px 16px;
+  height: 36px;
+  cursor: pointer;
+  white-space: nowrap;
+  min-height: 36px;
+  transition: opacity 0.2s;
+  box-sizing: border-box;
+  min-width: 0;
+  flex-shrink: 0;
+}
+
+.mobile-fab {
+  display: none;
+  position: fixed;
+  right: 16px;
+  bottom: max(20px, env(safe-area-inset-bottom, 0px));
+  z-index: 1800;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.mobile-fab__btn {
+  width: 52px;
+  height: 52px;
+  border: none;
+  border-radius: 50%;
+  background: #fff;
+  color: #111;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);
+  cursor: pointer;
+  padding: 0;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.mobile-fab__btn img {
+  display: block;
+  width: 24px;
+  height: 24px;
+  filter: none;
+}
+.mobile-fab__btn--top {
+  font-family: 'GMarketSans', 'Pretendard', "Malgun Gothic", -apple-system, system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  background: #f0f0f2;
+  color: #111;
+}
+.mobile-fab__btn--top:hover {
+  background: #e4e4e8;
+}
+
+.copy-toast {
+  position: fixed;
+  left: 50%;
+  top: calc(var(--header-h) + 12px);
+  transform: translate(-50%, 12px);
+  background: #fff;
+  color: #111;
+  font-family: 'GMarketSans', 'Pretendard', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+  padding: 14px 22px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2000;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+.copy-toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.share-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2100;
+  padding: 20px;
+}
+.share-modal.is-open { display: flex; }
+.share-modal__dialog {
+  background: #fff;
+  border-radius: 20px;
+  padding: 32px 24px 28px;
+  width: 100%;
+  max-width: 420px;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  animation: shareModalIn 0.18s ease-out;
+}
+@keyframes shareModalIn {
+  from { transform: translateY(12px); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+.share-modal__title {
+  font-family: 'GMarketSans', 'Pretendard', sans-serif;
+  color: #111;
+  font-size: 20px;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+.share-modal__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 26px;
+  color: #555;
+  line-height: 1;
+  border-radius: 50%;
+  transition: background 0.15s;
+}
+.share-modal__close:hover { background: #f0f0f0; }
+.share-modal__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.share-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 4px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: background 0.15s;
+  min-height: 44px;
+}
+.share-item:hover { background: #f5f5f7; }
+.share-item__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+.share-item__icon svg { width: 28px; height: 28px; display: block; }
+.share-item--kakao     .share-item__icon { background: #FEE500; color: #181600; }
+.share-item--facebook  .share-item__icon { background: #1877F2; }
+.share-item--twitter   .share-item__icon { background: #000; }
+.share-item--naver     .share-item__icon { background: #03C75A; }
+.share-item--instagram .share-item__icon {
+  background: linear-gradient(135deg, #feda75 0%, #fa7e1e 25%, #d62976 50%, #962fbf 75%, #4f5bd5 100%);
+}
+.share-item--copy      .share-item__icon { background: #2c2c32; }
+.share-item__label {
+  font-family: 'GMarketSans', 'Pretendard', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+@media (max-width: 480px) {
+  .share-modal__dialog { padding: 28px 18px 22px; }
+  .share-modal__grid { gap: 8px; }
+  .share-item__icon { width: 52px; height: 52px; }
+  .share-item__icon svg { width: 26px; height: 26px; }
+  .share-item__label { font-size: 12px; }
+}
+
+@media (max-width: 1024px) {
+  .cb-header {
+    height: auto;
+    min-height: var(--header-h);
+    padding: 10px 0;
+  }
+  .cb-header__inner {
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: min(24px, 2vw);
+    padding: 0 24px;
+  }
+  .cb-header__notice-wrap {
+    flex: 1 1 0;
+    min-width: 0;
+    align-items: flex-start;
+  }
+  .cb-header__notice {
+    flex: 1 1 auto;
+    white-space: normal;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .cb-header {
+    height: auto;
+    min-height: var(--header-h);
+    overflow: visible;
+    align-items: stretch;
+    padding: 12px 0;
+  }
+  .cb-header__inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 0 max(12px, env(safe-area-inset-left, 0px)) 0 max(12px, env(safe-area-inset-right, 0px));
+    min-width: 0;
+    box-sizing: border-box;
+  }
+  .cb-header__notice-wrap {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    justify-content: center;
+    gap: 0;
+    align-items: stretch;
+    flex: none;
+    overflow: visible;
+  }
+  .cb-header__notice {
+    text-align: center;
+    font-size: clamp(12px, 3.6vw, 17px);
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin: 0;
+    white-space: normal;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+    overflow: visible;
+  }
+  .toggle-btn,
+  .btn-share {
+    display: none;
+  }
+  .mobile-fab {
+    display: flex;
+  }
+}
+</style>
+</head>
+<body>
+
+<header class="cb-header" id="top">
+    <div class="cb-header__inner">
+      <div class="cb-header__notice-wrap">
+        <!-- PC방 토글 -->
+        <button class="toggle-btn" type="button" id="pcRoomToggle" data-state="off" aria-label="PC방 모드 토글">
+          <img class="toggle-btn__img" src="assets/off=off.png" alt="PC방 모드 OFF" loading="lazy" />
+        </button>
+        <p class="cb-header__notice">
+          본 이벤트는 <a href="https://picaplay.com/pcbang/main.do" target="_blank" rel="noopener noreferrer"><u>피카플레이 가맹 PC방</u></a> 또는 <b>개인PC에서</b> <a href="https://www.craftbox.co.kr/" target="_blank" rel="noopener noreferrer"><u>크래프트박스 설치</u></a> 후 참여 가능합니다.
+        </p>
+      </div>
+      <button class="btn-share" type="button" id="btnShare" aria-label="공유하기">
+        <img src="assets/share_icon.svg" alt="share icon" />
+        <span>공유하기</span>
+      </button>
+    </div>
+  </header>
+
+<div class="progress" id="progress"></div>
+
+<!-- ============ KV ============ -->
+<section class="kv" id="hero">
+  <canvas class="kv__silk" id="silk"></canvas>
+
+  <div class="kv__ribbon kv__ribbon--l" data-ribbon="l"><img src="./assets/ribbon-l.png" alt=""></div>
+  <div class="kv__ribbon kv__ribbon--r" data-ribbon="r"><img src="./assets/ribbon-r.png" alt=""></div>
+
+  <div class="kv__inner">
+    <div class="kv__trophy-wrap">
+      <img class="kv__trophy" id="kvTrophy" src="./assets/kv-trophy.webp" alt="카카오페이 × 크래프트박스 CBL LOL 트로피">
+      <span class="kv__trophy-gloss" aria-hidden="true" data-kv-depth=".45"></span>
+    </div>
+
+    <div class="kv__copy">
+      <div class="kv__logos">
+        <img class="kv__logo-pay" src="./assets/logo-kakaopay.png" alt="카카오페이">
+        <span class="kv__x">×</span>
+        <img class="kv__logo-cbx" src="./assets/logo-craftbox.png" alt="크래프트박스">
+      </div>
+
+      <h1 class="kv__title">
+        <img src="./assets/title.png" alt="카카오페이와 함께하는 크래프트박스 LOL 랭킹전">
+        <span class="kv__title-gloss" aria-hidden="true"></span>
+      </h1>
+
+      <div class="season" data-season>
+        <div class="season__top">
+          <span class="season__chip">시즌 9~10</span>
+          <span class="season__range tnum">2026. 09. 01(화) ~ 10. 31(토)</span>
+        </div>
+        <div class="season__mid">
+          <div class="season__state">
+            <span class="season__dot" data-season-dot></span>
+            <span class="season__label" data-season-label>시즌 9 진행 중</span>
+          </div>
+          <div><span class="season__dday tnum" data-season-dday>D-30</span></div>
+        </div>
+        <div class="season__track"><div class="season__bar" data-season-bar></div></div>
+        <div class="season__foot">
+          <span class="tnum" data-season-from>09.01</span>
+          <span class="tnum" data-season-to>09.30</span>
+        </div>
+      </div>
+
+      <a class="kv__cta" href="#event1">랭킹전 참여하기<span>↓</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FLOATING NAV ============ -->
+<nav class="fnav">
+  <img class="fnav__ribbon" src="./assets/ribbon-nav.png" alt="">
+  <span class="fnav__bg"></span>
+  <img class="fnav__trophy" src="./assets/nav-trophy.webp" alt="">
+  <a class="fnav__link" href="#event1"><span class="fnav__num">01</span>참여방법</a>
+  <a class="fnav__link" href="#event2"><span class="fnav__num">02</span>미션 챌린지</a>
+  <a class="fnav__link" href="#event3"><span class="fnav__num">03</span>카카오페이혜택</a>
+  <span class="fnav__sep"></span>
+  <a class="fnav__sub" href="#notice">유의사항</a>
+  <img class="fnav__leaf" src="./assets/ribbon-l.png" alt="">
+  <a class="fnav__top" href="#hero">↑ TOP</a>
+</nav>
+
+<!-- ============ EVENT 01 ============ -->
+<section class="sec sec--e1" id="event1">
+  <div class="sec__inner">
+
+    <div class="sec-head e1-head">
+      <img class="sec-tag" src="./assets/tag-event01.png" alt="EVENT 01">
+      <h2 class="sec-title">랭킹에 오르면<br>마일리지가 쏟아진다!</h2>
+      <p class="sec-desc">크래프트박스 LOL 랭킹전에 참여하고 순위에 따라 피카 마일리지를 받으세요.<br>시즌별로 순위가 초기화되어 두 번의 기회가 있어요!</p>
+    </div>
+
+    <div class="season-chips">
+      <span><b>시즌 9</b>9/1~9/30</span>
+      <span><b>시즌 10</b>10/1~10/31</span>
+    </div>
+
+    <div class="divider" aria-hidden="true"><span class="divider__dot"></span></div>
+
+    <h3 class="sub-title sub-title--tight">순위별 보상</h3>
+    <p class="sub-desc">1개 시즌 기준 · 총 3,002명에게 지급</p>
+
+    <div class="podium">
+      <div class="rank1">
+        <div class="rank1__aura" aria-hidden="true"></div>
+        <div class="rank1__wm" aria-hidden="true">1</div>
+        <img class="card-ribbon card-ribbon--l" src="./assets/ribbon-l.png" alt="" aria-hidden="true">
+        <img class="card-ribbon card-ribbon--r" src="./assets/ribbon-r.png" alt="" aria-hidden="true">
+        <div class="badge-gold">TOP PRIZE · 1위</div>
+        <img class="rank1__img" src="./assets/reward-1st.png" alt="1위 1,000,000 마일리지">
+      </div>
+
+      <div class="podium__row">
+        <div class="rank rank--2">
+          <div class="rank__wm" aria-hidden="true">2</div>
+          <div class="rank__corner" aria-hidden="true"></div>
+          <div class="rank__label">2위</div>
+          <img class="rank__img" src="./assets/reward-2nd.png" alt="2위 마일리지 쿠폰">
+        </div>
+        <div class="rank rank--3">
+          <div class="rank__wm" aria-hidden="true">3</div>
+          <div class="rank__corner" aria-hidden="true"></div>
+          <div class="rank__label">3위</div>
+          <img class="rank__img" src="./assets/reward-3rd.png" alt="3위 100,000 마일리지">
+        </div>
+      </div>
+    </div>
+
+    <div class="tiers">
+      <div class="tier tier--1"><div class="tier__rank">4위</div><div class="tier__val tnum">50,000</div></div>
+      <div class="tier tier--2"><div class="tier__rank">5~10위</div><div class="tier__val tnum">10,000</div></div>
+      <div class="tier tier--3"><div class="tier__rank">11~20위</div><div class="tier__val tnum">7,000</div></div>
+      <div class="tier tier--4"><div class="tier__rank">21~100위</div><div class="tier__val tnum">3,000</div></div>
+      <div class="tier tier--5"><div class="tier__rank">101~300위</div><div class="tier__val tnum">1,000</div></div>
+      <div class="tier tier--6"><div class="tier__rank">301~3,000위</div><div class="tier__val tnum">100</div></div>
+    </div>
+
+    <div class="lucky">
+      <div class="lucky__body">
+        <div class="lucky__kicker">LUCKY NUMBER</div>
+        <div class="lucky__title">행운번호 특별 보상</div>
+        <p class="lucky__desc">순위가 낮아도 괜찮아요. 77위, 777위 번호에 도착하면 추가 지급!</p>
+      </div>
+      <div class="lucky__nums">
+        <div class="lucky__num"><b>77위</b><span class="tnum">+30,000</span></div>
+        <div class="lucky__num"><b>777위</b><span class="tnum">+30,000</span></div>
+      </div>
+    </div>
+<p class="foot-note">내 순위와 점수는 크래프트박스 클라이언트에서 확인할 수 있습니다.</p>
+    <div class="divider" aria-hidden="true"><span class="divider__dot"></span></div>
+
+    <h3 class="sub-title">참여 방법</h3>
+    <div class="steps">
+      <div class="step">
+        <div class="step__thumb"><img src="./assets/step1.png" alt="크래프트박스 다운로드 화면" style="object-position:center top"></div>
+        <div class="step__body">
+          <div class="step__title"><i>1</i>. 크래프트박스 설치</div>
+          <p class="step__desc">PC방 좌석에서는 설치 없이 바로 이용할 수 있어요.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step__thumb"><img class="is-contain" src="./assets/step2.png" alt="랭킹전 참가하기 화면"></div>
+        <div class="step__body">
+          <div class="step__title"><i>2</i>. 랭킹전 참여하기</div>
+          <p class="step__desc">롤 랭킹전 메뉴에서 참여하기 버튼 클릭!</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step__thumb"><img src="./assets/m1.webp" alt="리그 오브 레전드 플레이 화면" style="object-position:right center"></div>
+        <div class="step__body">
+          <div class="step__title"><i>3</i>. 플레이하고 점수 쌓기</div>
+          <p class="step__desc">플레이 기록이 자동 집계되어 랭킹에 반영됩니다.</p>
+        </div>
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="deco" aria-hidden="true">
+    <div class="deco__tex"></div>
+    <div class="deco__glow"></div>
+  </div>
+</section>
+
+<!-- ============ EVENT 02 ============ -->
+<section class="sec sec--e2" id="event2">
+  <div class="sec__inner">
+
+    <div class="sec-head e2-head">
+      <img class="sec-tag" src="./assets/tag-event02.png" alt="EVENT 02">
+      <h2 class="sec-title">더블 미션 챌린지</h2>
+      <div class="e2-season">
+        <span class="e2-season__name" data-mission-season>시즌 9</span>
+        <span class="e2-season__bar"></span>
+        <span class="e2-season__range tnum" data-mission-range>2026. 09. 01 ~ 09. 30</span>
+      </div>
+    </div>
+
+    <div class="gear">
+      <div class="rank1__aura" aria-hidden="true"></div>
+      <img class="card-ribbon card-ribbon--l" src="./assets/ribbon-l.png" alt="" aria-hidden="true">
+      <img class="card-ribbon card-ribbon--r" src="./assets/ribbon-r.png" alt="" aria-hidden="true">
+      <div class="gear__grid">
+        <div>
+          <img class="gear__img" src="./assets/gear-keyboard.png" alt="G PRO X TKL RAPID 유선 게이밍 키보드">
+        </div>
+        <div>
+          <div class="badge-gold">🏆 단 1명에게만</div>
+          <div class="gear__name">G PRO X TKL RAPID<br>유선 게이밍 키보드</div>
+          <div class="gear__spec">블랙, 마그네틱축</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mission-lead"><div>두 미션 중 하나만 달성해도 응모됩니다</div></div>
+
+    <div class="missions">
+      <div class="mission">
+        <div class="mission__thumb"><img src="./assets/m1.webp" alt="리그 오브 레전드"></div>
+        <div class="mission__body">
+          <div class="mission__tag mission__tag--01">MISSION 01</div>
+          <div class="mission__title">랭킹전 참여 후 3회 이상 플레이</div>
+          <p class="mission__desc">시즌별 각 <b>100명</b> · 총 200명 추첨 선발</p>
+        </div>
+      </div>
+      <div class="mission">
+        <div class="mission__thumb"><img class="is-pay" src="./assets/m2.png" alt="카카오페이 결제 화면"></div>
+        <div class="mission__body">
+          <div class="mission__tag mission__tag--02">MISSION 02</div>
+          <div class="mission__title">카카오페이로 3회 이상 결제</div>
+          <p class="mission__desc">시즌별 각 <b>100명</b> · 총 200명 추첨 선발</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="deco" aria-hidden="true"><div class="deco__tex"></div></div>
+</section>
+
+<!-- ============ EVENT 03 ============ -->
+<section class="sec sec--e3" id="event3">
+  <div class="sec__inner">
+
+    <div class="sec-head e3-head">
+      <img class="sec-tag" src="./assets/tag-event03.png" alt="EVENT 03">
+      <h2 class="sec-title">피카PC방에서<br>카카오페이로 결제하면</h2>
+      <p class="sec-desc">카카오페이 머니로 결제할 때만 적용되며, 매월 선착순으로 제공됩니다.</p>
+    </div>
+
+    <div class="benefits">
+      <div class="benefit is-active" data-benefit="1">
+        <div class="benefit__badge">혜택 01</div>
+        <div class="benefit__title">5회 이상 결제 시<br>5,000원 상당 혜택</div>
+        <p class="benefit__desc">피카PC방에서 카카오페이머니로 5회 이상 결제 시<br>피카플레이 3,000M &amp; 카카오페이 2,000원 할인 쿠폰 지급</p>
+        <img class="benefit__img" src="./assets/coupon.png" alt="피카플레이 3,000M · 카카오페이 2,000원 쿠폰">
+      </div>
+      <div class="benefit" data-benefit="2">
+        <div class="benefit__badge">혜택 02</div>
+        <div class="benefit__title">누적 5만원 결제 시<br>5,000원 상당 혜택</div>
+        <p class="benefit__desc">피카PC방에서 카카오페이머니로 누적 5만원 결제 시<br>피카플레이 3,000M &amp; 카카오페이 2,000원 할인 쿠폰 지급</p>
+        <img class="benefit__img" src="./assets/coupon.png" alt="피카플레이 3,000M · 카카오페이 2,000원 쿠폰">
+      </div>
+    </div>
+
+    <ul class="benefit-note">
+      <li>2026년 9월 1일(화) ~ 10월 31일(토)</li>
+      <li>*매월 선착순 1,000명</li>
+      <li>피카플레이 마일리지와 카카오페이 할인쿠폰은 매월 이벤트 종료 후 수동 지급됩니다.</li>
+    </ul>
+
+    <div class="divider" aria-hidden="true"><span class="divider__dot"></span></div>
+
+    <h3 class="sub-title">카카오페이로 결제하는 방법</h3>
+    <div class="pays">
+      <div class="pay">
+        <div class="pay__num">1</div>
+        <div class="pay__figure"><img src="./assets/pay1.png" alt="PC방 찾기 화면"></div>
+        <div class="pay__text"><em>카카오페이</em>로 가맹 PC방 찾기</div>
+        <a class="pay__btn" href="https://picaplay.com/pcbang/main.do">가맹 피카PC방 찾기 ↗</a>
+      </div>
+      <div class="pay">
+        <div class="pay__num">2</div>
+        <div class="pay__figure"><img src="./assets/pay2.png" alt="결제수단 선택 화면"></div>
+        <div class="pay__text pay__text--center"><span>요금제나 먹거리 결제 시<br>결제 수단 <em>카카오페이 선택</em></span></div>
+      </div>
+      <div class="pay">
+        <div class="pay__num">3</div>
+        <div class="pay__figure"><img src="./assets/pay3.png" alt="카카오페이 결제하기 QR 화면"></div>
+        <div class="pay__text pay__text--center"><span>QR 스캔하고, 카카오페이 머니로 결제 완료</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="deco" aria-hidden="true">
+    <div class="deco__glow"></div>
+    <div class="deco__tex"></div>
+  </div>
+</section>
+
+<!-- ============ GUIDE / NOTICE ============ -->
+<section class="sec sec--guide" id="guide">
+  <div class="deco" aria-hidden="true">
+    <div class="deco__glow deco__glow--a"></div>
+    <div class="deco__glow deco__glow--b"></div>
+    <div class="deco__tex"></div>
+  </div>
+
+  <div class="sec__inner">
+    <h2 class="block-title">이벤트 안내</h2>
+    <div class="guides">
+      <div class="guide">
+        <div class="guide__body">
+          <div class="guide__title">피카 마일리지란?</div>
+          <p class="guide__desc">이벤트를 통해 얻은 마일리지로 PC방 요금제, 먹거리 구매 또는 컬쳐랜드 상품권으로 교환할 수 있어요!</p>
+        </div>
+        <div class="guide__thumb"><img src="./assets/g-mileage.png" alt="피카 마일리지"></div>
+      </div>
+      <div class="guide">
+        <div class="guide__body">
+          <div class="guide__title">크래프트박스란?</div>
+          <p class="guide__desc">PC방/집 어디서든 게임만 해도 다양한 혜택을 받아갈 수 있는 게임 런처입니다.</p>
+        </div>
+        <div class="guide__thumb"><img src="./assets/g-kraft.png" alt="크래프트박스"></div>
+      </div>
+    </div>
+
+    <div class="divider divider--cool" aria-hidden="true"><span class="divider__dot"></span></div>
+
+    <h2 class="block-title block-title--notice" id="notice">유의사항</h2>
+    <div class="acc" id="notice-acc">
+      <button class="acc__btn" type="button" data-acc="n1" aria-expanded="true">공통 유의사항<span class="acc__arrow">▴</span></button>
+      <ul class="acc__panel" id="n1">
+        <li>본 이벤트는 카카오페이 가맹 피카PC방에서만 참여 가능하며, 매장에 따라 일부 혜택이 제공되지 않을 수 있습니다.</li>
+        <li>이벤트 기간 및 내용은 내부 사정에 따라 사전 고지 후 변경·종료될 수 있습니다.</li>
+        <li>부정한 방법(어뷰징, 계정 도용, 매크로, 다중 계정 등)으로 참여한 경우 리워드 지급이 취소되며 회수될 수 있습니다.</li>
+        <li>(주)미디어웹은 경품 지급을 위해 당첨자에 한하여 개인정보를 수집하며, 5만 원 초과 경품은 제세공과금(22% 원천징수)이 본인 부담됩니다. 관련 세무 신고를 위해 신분증 사본(또는 주민등록등본 등) 제출이 필요할 수 있습니다.</li>
+        <li>기한 내 서류 제출 및 제세공과금 납부가 완료되지 않을 경우 당첨 대상자에서 제외될 수 있습니다.</li>
+        <li>본 이벤트는 당사 사정에 따라 조기 종료 또는 연장될 수 있습니다.</li>
+        <li>이벤트 관련 문의 사항은 피카플레이 또는 크래프트박스 1:1 문의를 통해 문의 부탁드립니다.</li>
+      </ul>
+
+      <button class="acc__btn" type="button" data-acc="n2" aria-expanded="true">EVENT 1 랭킹전<span class="acc__arrow">▴</span></button>
+      <ul class="acc__panel" id="n2">
+        <li>랭킹전은 시즌 9(9/1~9/30), 시즌 10(10/1~10/31) 2개 시즌으로 운영되며 순위는 시즌별로 초기화됩니다.</li>
+        <li>보상은 1개 시즌 기준이며, 시즌별로 각각 지급됩니다. (총 3,002명 / 시즌)</li>
+        <li>행운번호(77위·777위) 보상은 해당 순위 달성자에게 지급됩니다.</li>
+        <li>카카오페이 랭킹전 및 더블 미션 챌린지 내 도전과제는 최신 버전 크래프트박스에서만 이용 가능합니다. 랭킹전 메뉴 접속이 불가한 경우, 매장 사장님께 최신 버전 업데이트를 요청해 주세요.</li>
+        <li>랭킹전 1등 ~ 3등 마일리지는 시즌 종료 후, 순위 검증 절차 완료 후 2주 이내 지급됩니다.</li>
+        <li>시즌별 최종 랭킹은 서버 데이터 집계 및 반영 시점을 기준으로 산정되며, 화면에 표시된 순위와 실제 최종 순위 간 차이가 발생할 수 있습니다.</li>
+      </ul>
+
+      <button class="acc__btn" type="button" data-acc="n3" aria-expanded="true">EVENT 2 더블 미션 챌린지<span class="acc__arrow">▴</span></button>
+      <ul class="acc__panel" id="n3">
+        <li>미션01·미션02에서 시즌별 각 100명씩, 총 400명을 추첨 선발합니다.</li>
+        <li>선발된 400명 중 추첨을 통해 최종 1명에게 게이밍기어 세트(80만원 상당)를 지급합니다.</li>
+        <li>경품은 당첨자에게 개별 연락 후 배송되며, 연락 불가 시 당첨이 취소될 수 있습니다.</li>
+        <li>경품 당첨자에게 3회 이상 연락을 시도했음에도 연결되지 않을 경우 당첨이 취소될 수 있으며, 예비 당첨자에게 당첨 기회가 순차적으로 제공될 수 있습니다.</li>
+        <li>Npay 결제 후 환불 또는 취소된 건은 참여 횟수에 포함되지 않습니다.</li>
+        <li>결제 후 환불 또는 취소를 반복하는 경우 어뷰징 행위로 간주되어 이벤트 대상에서 제외될 수 있습니다.</li>
+        <li>재고 수급 현황에 따라서, 경품은 변경될 수 있습니다.</li>
+        <li>1회 결제 금액이 N원 이상인 건에 한하여 참여 실적으로 인정됩니다.</li>
+        <li>경품 당첨자는 크래프트박스 공식 블로그를 통해 발표됩니다. <a href="https://blog.naver.com/playcraftbox" target="_blank" rel="noopener">[바로가기]</a></li>
+      </ul>
+
+      <button class="acc__btn" type="button" data-acc="n4" aria-expanded="true">EVENT 3 카카오페이 전용 미션<span class="acc__arrow">▴</span></button>
+      <ul class="acc__panel" id="n4">
+        <li>모든 혜택은 카카오페이 머니 결제 건에 한하며, 카드 결제 등 다른 결제수단은 제외됩니다.</li>
+        <li>혜택은 매월 선착순으로 제공되며, 준비된 수량 소진 시 기간 내에도 조기 종료됩니다.</li>
+        <li>대상자 확인은 카카오페이 내부 결제 데이터를 기준으로 하며, 취소·환불된 결제 건은 제외됩니다.</li>
+        <li>마일리지 쿠폰(PIN)은 매월 이벤트 종료 후 익월 카카오페이를 통해 지급됩니다.</li>
+        <li>본 이벤트는 피카플레이 회원으로 로그인 후 카카오페이로 결제한 금액에 한해 집계됩니다.</li>
+        <li>카카오페이로 피카페이를 충전한 금액은 이벤트 대상에 포함되지 않습니다.</li>
+        <li>할인쿠폰 유효기간<br>· 9월 참여자 : N월 N일 ~ N월 N일<br>· 10월 참여자 : N월 N일 ~ N월 N일</li>
+        <li>카카오페이 N원 할인 쿠폰은 N원 초과 결제 시에만 사용 가능합니다.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<script src="./js/main.js"></script>
+
+<div id="shareModal" class="share-modal" role="dialog" aria-modal="true" aria-labelledby="shareModalTitle" aria-hidden="true">
+    <div class="share-modal__dialog" role="document">
+      <button type="button" class="share-modal__close" id="shareModalClose" aria-label="닫기">&times;</button>
+      <h2 id="shareModalTitle" class="share-modal__title">공유하기</h2>
+      <div class="share-modal__grid">
+        <button type="button" class="share-item share-item--kakao" data-share="kakao" aria-label="카카오톡으로 공유">
+          <span class="share-item__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.48 3 2 6.58 2 11c0 2.83 1.86 5.32 4.66 6.73L5.5 21.5l4.2-2.47c.76.11 1.54.17 2.3.17 5.52 0 10-3.58 10-8S17.52 3 12 3z"/></svg>
+          </span>
+          <span class="share-item__label">카카오톡</span>
+        </button>
+        <button type="button" class="share-item share-item--facebook" data-share="facebook" aria-label="페이스북으로 공유">
+          <span class="share-item__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.3-1.5 1.6-1.5h1.7V3.6c-.3 0-1.3-.1-2.5-.1-2.4 0-4.1 1.5-4.1 4.2v2.3H7.5v3.1h2.6V21h3.4z"/></svg>
+          </span>
+          <span class="share-item__label">페이스북</span>
+        </button>
+        <button type="button" class="share-item share-item--twitter" data-share="twitter" aria-label="트위터(X)로 공유">
+          <span class="share-item__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.451-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
+          </span>
+          <span class="share-item__label">트위터</span>
+        </button>
+        <button type="button" class="share-item share-item--naver" data-share="naver" aria-label="네이버 블로그로 공유">
+          <span class="share-item__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.91 12.03 9.94 6H6v12h4.09v-6.03L14.06 18H18V6h-4.09z"/></svg>
+          </span>
+          <span class="share-item__label">네이버블로그</span>
+        </button>
+        <button type="button" class="share-item share-item--instagram" data-share="instagram" aria-label="인스타그램 공유용 URL 복사">
+          <span class="share-item__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </span>
+          <span class="share-item__label">인스타그램</span>
+        </button>
+        <button type="button" class="share-item share-item--copy" data-share="copy" aria-label="URL 복사">
+          <span class="share-item__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          </span>
+          <span class="share-item__label">URL 복사</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="copyToast" class="copy-toast" role="status" aria-live="polite">클립보드에 복사되었습니다.</div>
+  <div class="mobile-fab" role="group" aria-label="모바일 플로팅 버튼">
+    <button class="mobile-fab__btn" type="button" id="btnShareFloating" aria-label="공유하기">
+      <img src="assets/share_icon.svg" alt="" aria-hidden="true" loading="lazy" />
+    </button>
+    <button class="mobile-fab__btn mobile-fab__btn--top" type="button" id="btnScrollTop" aria-label="맨 위로">
+      <span aria-hidden="true">TOP</span>
+    </button>
+  </div>
+
+<script>
+    function setPcRoomToggleState(isPcRoom) {
+      var toggleBtn = document.getElementById('pcRoomToggle');
+      if (!toggleBtn) { return; }
+      var toggleImg = toggleBtn.querySelector('.toggle-btn__img');
+      if (!toggleImg) { return; }
+      var isOn = Boolean(isPcRoom);
+      toggleBtn.dataset.state = isOn ? 'on' : 'off';
+      toggleImg.src = isOn ? 'assets/off=on.png' : 'assets/off=off.png';
+      toggleImg.alt = isOn ? 'PC방 모드 ON' : 'PC방 모드 OFF';
+    }
+    setPcRoomToggleState(false);
+
+    var SHARE_CONFIG = {
+      title: '카카오페이와 함께하는 크래프트박스 LOL 랭킹전',
+      description: '크래프트박스 LOL 랭킹전에 참여하고 순위별 마일리지를 받아가세요! 카카오페이 결제 혜택까지 확인해보세요.',
+      kakaoKey: 'd1c0c39f4dbac0062bf36527a3021357',
+      ogImage:  'https://ics.mediaweb.co.kr/_event/20260901_kakaoCBL/assets/Thumbnail_800x400.jpg'
+    };
+
+    var copyToast = document.getElementById('copyToast');
+    var copyToastTimer = null;
+    var DEFAULT_TOAST_MSG = '클립보드에 복사되었습니다.';
+    function showCopyToast(msg) {
+      if (!copyToast) { return; }
+      copyToast.textContent = msg || DEFAULT_TOAST_MSG;
+      copyToast.classList.add('is-visible');
+      if (copyToastTimer) { clearTimeout(copyToastTimer); }
+      copyToastTimer = setTimeout(function() {
+        copyToast.classList.remove('is-visible');
+      }, 2200);
+    }
+    function fallbackCopyText(text) {
+      var textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.setAttribute('readonly', '');
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      var copied = false;
+      try {
+        copied = document.execCommand('copy');
+      } catch (e) {}
+      document.body.removeChild(textarea);
+      return copied;
+    }
+    function copyUrlWithToast(url, toastMsg) {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(url).then(function() {
+          showCopyToast(toastMsg);
+        }).catch(function() {
+          if (fallbackCopyText(url)) { showCopyToast(toastMsg); }
+        });
+      } else if (fallbackCopyText(url)) {
+        showCopyToast(toastMsg);
+      }
+    }
+
+    (function initKakao() {
+      if (!window.Kakao || !SHARE_CONFIG.kakaoKey) { return; }
+      if (Kakao.isInitialized && Kakao.isInitialized()) { return; }
+      try { Kakao.init(SHARE_CONFIG.kakaoKey); } catch (e) {}
+    })();
+
+    var shareModal = document.getElementById('shareModal');
+    var shareModalClose = document.getElementById('shareModalClose');
+    var lastShareTrigger = null;
+    function openShareModal(trigger) {
+      if (!shareModal) { return; }
+      lastShareTrigger = trigger || null;
+      shareModal.classList.add('is-open');
+      shareModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      if (shareModalClose) { shareModalClose.focus(); }
+    }
+    function closeShareModal() {
+      if (!shareModal) { return; }
+      shareModal.classList.remove('is-open');
+      shareModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (lastShareTrigger && lastShareTrigger.focus) { lastShareTrigger.focus(); }
+    }
+    if (shareModal) {
+      shareModal.addEventListener('click', function(e) {
+        if (e.target === shareModal) { closeShareModal(); }
+      });
+    }
+    if (shareModalClose) {
+      shareModalClose.addEventListener('click', closeShareModal);
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && shareModal && shareModal.classList.contains('is-open')) {
+        closeShareModal();
+      }
+    });
+
+    function openPopup(url) {
+      var w = 600, h = 600;
+      var left = (window.screen.width  - w) / 2;
+      var top  = (window.screen.height - h) / 2;
+      window.open(url, '_blank', 'width=' + w + ',height=' + h + ',left=' + left + ',top=' + top + ',noopener');
+    }
+    function shareFacebook() {
+      var u = encodeURIComponent(window.location.href);
+      openPopup('https://www.facebook.com/sharer/sharer.php?u=' + u);
+    }
+    function shareTwitter() {
+      var u = encodeURIComponent(window.location.href);
+      var t = encodeURIComponent(SHARE_CONFIG.title);
+      openPopup('https://twitter.com/intent/tweet?url=' + u + '&text=' + t);
+    }
+    function shareNaver() {
+      var u = encodeURIComponent(window.location.href);
+      var t = encodeURIComponent(SHARE_CONFIG.title);
+      openPopup('https://share.naver.com/web/shareView?url=' + u + '&title=' + t);
+    }
+    function shareKakao() {
+      if (!window.Kakao || !Kakao.Share) { return; }
+      if (!Kakao.isInitialized || !Kakao.isInitialized()) { return; }
+      try {
+        Kakao.Share.sendDefault({
+          objectType: 'feed',
+          content: {
+            title: SHARE_CONFIG.title,
+            description: SHARE_CONFIG.description,
+            imageUrl: SHARE_CONFIG.ogImage,
+            link: {
+              mobileWebUrl: window.location.href,
+              webUrl: window.location.href
+            }
+          },
+          buttons: [{
+            title: '자세히 보기',
+            link: {
+              mobileWebUrl: window.location.href,
+              webUrl: window.location.href
+            }
+          }]
+        });
+      } catch (e) {}
+    }
+    function shareInstagram() {
+      copyUrlWithToast(window.location.href, 'URL이 복사되었습니다. 인스타그램에 붙여넣어 주세요.');
+    }
+    function shareCopy() {
+      copyUrlWithToast(window.location.href, '클립보드에 복사되었습니다.');
+    }
+    var SHARE_HANDLERS = {
+      kakao:     shareKakao,
+      facebook:  shareFacebook,
+      twitter:   shareTwitter,
+      naver:     shareNaver,
+      instagram: shareInstagram,
+      copy:      shareCopy
+    };
+    if (shareModal) {
+      shareModal.addEventListener('click', function(e) {
+        var target = e.target.closest ? e.target.closest('[data-share]') : null;
+        if (!target) { return; }
+        var type = target.getAttribute('data-share');
+        var handler = SHARE_HANDLERS[type];
+        if (typeof handler === 'function') {
+          handler();
+          closeShareModal();
+        }
+      });
+    }
+
+    var btnShare = document.getElementById('btnShare');
+    if (btnShare) {
+      btnShare.addEventListener('click', function() { openShareModal(btnShare); });
+    }
+    var btnShareFloating = document.getElementById('btnShareFloating');
+    if (btnShareFloating) {
+      btnShareFloating.addEventListener('click', function() { openShareModal(btnShareFloating); });
+    }
+    var btnScrollTop = document.getElementById('btnScrollTop');
+    if (btnScrollTop) {
+      btnScrollTop.addEventListener('click', function (e) {
+        e.preventDefault();
+        var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var behavior = reduce ? 'auto' : 'smooth';
+        try {
+          window.scrollTo({ top: 0, left: 0, behavior: behavior });
+        } catch (err) {
+          (document.scrollingElement || document.documentElement).scrollTop = 0;
+          document.body.scrollTop = 0;
+        }
+      });
+    }
+</script>
+</body>
+</html>
