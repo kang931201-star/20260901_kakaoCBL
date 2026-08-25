@@ -304,7 +304,6 @@ h1,h2,h3,p,ul{margin:0}
   border:1px solid var(--line-warm);border-radius:16px;
   box-shadow:0 16px 44px rgba(0,0,0,.5);
 }
-.fnav__ribbon{position:absolute;right:0;top:0;transform:translate(6%,-58%);width:clamp(56px,6vw,78px);height:auto;pointer-events:none;z-index:-2}
 .fnav__trophy{
   position:absolute;left:50%;top:0;transform:translate(-50%,-62%);
   width:clamp(34px,3.6vw,46px);height:auto;pointer-events:none;
@@ -471,6 +470,7 @@ h1,h2,h3,p,ul{margin:0}
 .step__body{text-align:center;margin-top:clamp(14px,2.2vw,20px)}
 .step__title{color:#fff;font-weight:800;font-size:clamp(15px,2.9vw,18px);letter-spacing:-.03em;margin-bottom:6px}
 .step__title i{color:var(--gold);font-style:normal}
+.step__title a{color:inherit}
 .step__desc{
   color:var(--beige);font-weight:500;font-size:clamp(12px,2.4vw,14px);line-height:1.6;
   font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
@@ -714,7 +714,7 @@ h1,h2,h3,p,ul{margin:0}
     width:100%;flex-direction:row;gap:2px;padding:6px;
   }
   .fnav__bg{border-radius:0;border-left:0;border-right:0;border-bottom:0}
-  .fnav__ribbon,.fnav__trophy,.fnav__leaf,.fnav__sep,.fnav__top{display:none}
+  .fnav__trophy,.fnav__leaf,.fnav__sep,.fnav__top{display:none}
   .fnav__link,.fnav__sub{flex:1;font-size:14px;padding:9px 2px}
   .fnav__num{display:none}
   body{padding-bottom:56px}
@@ -1155,7 +1155,6 @@ h1,h2,h3,p,ul{margin:0}
 
 <!-- ============ FLOATING NAV ============ -->
 <nav class="fnav">
-  <img class="fnav__ribbon" src="./assets/ribbon-nav.png" alt="">
   <span class="fnav__bg"></span>
   <img class="fnav__trophy" src="./assets/nav-trophy.webp" alt="">
   <a class="fnav__link" href="#howto"><span class="fnav__num">01</span>참여방법</a>
@@ -1278,22 +1277,22 @@ h1,h2,h3,p,ul{margin:0}
         <div class="step">
           <div class="step__thumb"><img src="./assets/step1.png" alt="크래프트박스 다운로드 화면" style="object-position:center top"></div>
           <div class="step__body">
-            <div class="step__title"><i>1</i>. 크래프트박스 설치</div>
-            <p class="step__desc">PC방 좌석에서는 설치 없이 바로 이용할 수 있어요.</p>
+            <div class="step__title"><i>1</i>. <a href="https://www.craftbox.co.kr/" target="_blank" rel="noopener noreferrer"><u>크래프트박스 설치</u></a></div>
+            
           </div>
         </div>
         <div class="step">
           <div class="step__thumb"><img class="is-contain" src="./assets/step2.png" alt="랭킹전 참가하기 화면"></div>
           <div class="step__body">
-            <div class="step__title"><i>2</i>. 랭킹전 참여하기</div>
-            <p class="step__desc">롤 랭킹전 메뉴에서 참여하기 버튼 클릭!</p>
+            <div class="step__title"><i>2</i>. 롤 랭킹전 메뉴에서<br>랭킹전 참가하기 클릭</div>
+            
           </div>
         </div>
         <div class="step">
           <div class="step__thumb"><img src="./assets/m1.webp" alt="리그 오브 레전드 플레이 화면" style="object-position:right center"></div>
           <div class="step__body">
-            <div class="step__title"><i>3</i>. 플레이하고 점수 쌓기</div>
-            <p class="step__desc">플레이 기록이 자동 집계되어 랭킹에 반영됩니다.</p>
+            <div class="step__title"><i>3</i>. 리그 오브 레전드 플레이하기</div>
+            <p class="step__desc">크래프트박스 실행 시, 롤 플레이 데이터가 자동 집계됩니다.</p>
           </div>
         </div>
       </div>
@@ -1368,7 +1367,7 @@ h1,h2,h3,p,ul{margin:0}
     <div class="sec-head e3-head">
       <img class="sec-tag" src="./assets/tag-event03.png" alt="EVENT 03">
       <h2 class="sec-title">피카PC방에서<br>카카오페이로 결제하면</h2>
-      <p class="sec-desc">카카오페이 머니로 결제할 때만 적용되며, 매월 선착순으로 제공됩니다.</p>
+      <p class="sec-desc">카카오페이머니로 결제할 때만 적용되며, 매월 선착순으로 제공됩니다.</p>
     </div>
 
     <div class="benefits">
@@ -1384,13 +1383,14 @@ h1,h2,h3,p,ul{margin:0}
         <div class="benefit__title">누적 5만원 결제 시<br>5,000원 상당 혜택</div>
         <p class="benefit__desc">피카PC방에서 카카오페이머니로 누적 5만원 결제 시<br>피카플레이 3,000M &amp; 카카오페이 2,000원 할인 쿠폰 지급</p>
         <img class="benefit__img" src="./assets/coupon.png" alt="피카플레이 3,000M · 카카오페이 2,000원 쿠폰">
+        <p class="benefit__note">혜택1과 동일하게 1회 결제 시 최소 1,000원 이상 결제 건만 합산됩니다.</p>
       </div>
     </div>
 
     <ul class="benefit-note">
       <li>2026년 9월 1일(화) ~ 10월 31일(토)</li>
-      <li>*매월 선착순 1,000명</li>
-      <li>피카플레이 마일리지와 카카오페이 할인쿠폰은 매월 이벤트 종료 후 수동 지급됩니다.</li>
+      <li>*혜택01, 혜택02 각각 매월 추첨 1,000명</li>
+      <li>피카플레이 마일리지와 카카오페이 할인쿠폰은 매월 이벤트 종료 후 익월 수동 지급됩니다.</li>
     </ul>
 
     <div class="divider" aria-hidden="true"><span class="divider__dot"></span></div>
@@ -1411,7 +1411,7 @@ h1,h2,h3,p,ul{margin:0}
       <div class="pay">
         <div class="pay__num">3</div>
         <div class="pay__figure"><img src="./assets/pay3.png" alt="카카오페이 결제하기 QR 화면"></div>
-        <div class="pay__text pay__text--center"><span>QR 스캔하고, 카카오페이 머니로 결제 완료</span></div>
+        <div class="pay__text pay__text--center"><span>QR 스캔하고, 카카오페이머니로 결제 완료</span></div>
       </div>
     </div>
   </div>
@@ -1477,26 +1477,27 @@ h1,h2,h3,p,ul{margin:0}
       <button class="acc__btn" type="button" data-acc="n3" aria-expanded="true">EVENT 2 더블 미션 챌린지<span class="acc__arrow">▴</span></button>
       <ul class="acc__panel" id="n3">
         <li>미션01·미션02에서 시즌별 각 100명씩, 총 400명을 추첨 선발합니다.</li>
-        <li>선발된 400명 중 추첨을 통해 최종 1명에게 게이밍기어 세트(80만원 상당)를 지급합니다.</li>
+        <li>선발된 400명 중 추첨을 통해 최종 1명에게 게이밍 키보드(G PRO X TKL RAPID 게이밍 키보드)를 지급합니다.</li>
         <li>경품은 당첨자에게 개별 연락 후 배송되며, 연락 불가 시 당첨이 취소될 수 있습니다.</li>
         <li>경품 당첨자에게 3회 이상 연락을 시도했음에도 연결되지 않을 경우 당첨이 취소될 수 있으며, 예비 당첨자에게 당첨 기회가 순차적으로 제공될 수 있습니다.</li>
-        <li>Npay 결제 후 환불 또는 취소된 건은 참여 횟수에 포함되지 않습니다.</li>
+        <li>카카오페이 결제 후 환불 또는 취소된 건은 참여 횟수에 포함되지 않습니다.</li>
         <li>결제 후 환불 또는 취소를 반복하는 경우 어뷰징 행위로 간주되어 이벤트 대상에서 제외될 수 있습니다.</li>
         <li>재고 수급 현황에 따라서, 경품은 변경될 수 있습니다.</li>
-        <li>1회 결제 금액이 N원 이상인 건에 한하여 참여 실적으로 인정됩니다.</li>
+        <li>1회 결제 금액이 1,000원 이상인 건에 한하여 참여 실적으로 인정됩니다.</li>
         <li>경품 당첨자는 크래프트박스 공식 블로그를 통해 발표됩니다. <a href="https://blog.naver.com/playcraftbox" target="_blank" rel="noopener">[바로가기]</a></li>
       </ul>
 
       <button class="acc__btn" type="button" data-acc="n4" aria-expanded="true">EVENT 3 카카오페이 전용 미션<span class="acc__arrow">▴</span></button>
       <ul class="acc__panel" id="n4">
-        <li>모든 혜택은 카카오페이 머니 결제 건에 한하며, 카드 결제 등 다른 결제수단은 제외됩니다.</li>
-        <li>혜택은 매월 선착순으로 제공되며, 준비된 수량 소진 시 기간 내에도 조기 종료됩니다.</li>
+        <li>모든 혜택은 카카오페이머니 결제 건에 한하며, 카드 결제 등 다른 결제수단은 제외됩니다.</li>
+        <li>혜택은 매월 추첨으로 제공되며, 준비된 수량 소진 시 기간 내에도 조기 종료됩니다.</li>
         <li>대상자 확인은 카카오페이 내부 결제 데이터를 기준으로 하며, 취소·환불된 결제 건은 제외됩니다.</li>
-        <li>마일리지 쿠폰(PIN)은 매월 이벤트 종료 후 익월 카카오페이를 통해 지급됩니다.</li>
+        <li>마일리지 쿠폰 및 카카오페이 할인 쿠폰은 매월 카카오페이를 통해 지급됩니다.</li>
         <li>본 이벤트는 피카플레이 회원으로 로그인 후 카카오페이로 결제한 금액에 한해 집계됩니다.</li>
         <li>카카오페이로 피카페이를 충전한 금액은 이벤트 대상에 포함되지 않습니다.</li>
-        <li>할인쿠폰 유효기간<br>· 9월 참여자 : N월 N일 ~ N월 N일<br>· 10월 참여자 : N월 N일 ~ N월 N일</li>
-        <li>카카오페이 N원 할인 쿠폰은 N원 초과 결제 시에만 사용 가능합니다.</li>
+        <li>할인쿠폰 유효기간<br>·  9월 참여자 지급은 추첨을 통해 10월말 내 쿠폰 지급.(쿠폰 유효기간 11월말까지) <br>· 10월 참여자 지급은 추첨을 통해 11월말 내 쿠폰 지급.(쿠폰 유효기간 12월말까지)</li>
+        <li>카카오페이 2,000원 할인 쿠폰은 2,000원 초과 결제 시에만 사용 가능합니다.</li>
+        <li>카카오페이 2천원 쿠폰 혜택은 피카PC방에서 카카오페이머니로 2,001원 이상 결제 시 2,000원 할인 적용한 쿠폰으로 지급됩니다.</li>
         <li>1회 결제 시 최소 1,000원 이상 결제 건만 인정됩니다.</li>
       </ul>
     </div>
